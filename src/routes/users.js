@@ -11,6 +11,8 @@ var userService = require('../services/userService');
  *     properties:
  *       id:
  *         type: integer
+ *       nome:
+ *         type: string
  */
 
 

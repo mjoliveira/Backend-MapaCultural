@@ -5,4 +5,4 @@ module.exports = {
         //Logica e Regras de Negocio
         return userRepository.getUsers();
     }
-}
+};

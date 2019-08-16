@@ -1,12 +1,17 @@
-const userService = require('../services/userService');
-const userRepository = require('../repositories/userRepository');
+const userService = require('../src/services/userService');
+const userRepository = require('../src/repositories/userRepository');
+const User = require('../src/models/User');
 
-jest.mock('../repositories/userRepository', () =>({
-    getUsers: function(){return 1},
+jest.mock('../src/repositories/userRepository', () =>({
+    getUsers: function(){ return {
+        id:1,
+        nome:"Gabriel"
+    }},
 }));
 
 
 
 test('Retorna ID do Usuario', () => {
-    expect(userService.getUsers()).toBe(1);
-  });
+    userResult = new User.User(1,"Gabriel");
+    expect(userService.getUsers()).toEqual(userResult);
+});
