@@ -6,7 +6,7 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
 const options = require('../swagger-options');
 
-
+//Import das rotas
 var indexRouter = require('./routes');
 var usersRouter = require('./routes/users');
 
