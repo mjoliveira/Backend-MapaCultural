@@ -15,6 +15,12 @@ var userService = require('../services/userService');
  *         type: string
  */
 
+/**
+ * @swagger
+ * tags:
+ *   - name: user
+ *     description: Tudo sobre Usuarios
+ */
 
 
 
@@ -23,6 +29,7 @@ var userService = require('../services/userService');
  *
  * /users:
  *   get:
+ *     tags: [user]
  *     description: Get Application Users
  *     responses:
  *       200:
