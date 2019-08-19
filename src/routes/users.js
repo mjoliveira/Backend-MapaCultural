@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var userService = require('../services/userService');
+const express = require('express');
+const router = express.Router();
+const userService = require('../services/userService');
 
 /**
  * @swagger

@@ -1,16 +1,16 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJSDoc = require('swagger-jsdoc');
 const options = require('../swagger-options');
 
 //Import das rotas
-var indexRouter = require('./routes');
-var usersRouter = require('./routes/users');
+const indexRouter = require('./routes');
+const usersRouter = require('./routes/users');
 
-var app = express();
+const app = express();
 
 //Configurações Swagger
 const swaggerSpec = swaggerJSDoc(options);
