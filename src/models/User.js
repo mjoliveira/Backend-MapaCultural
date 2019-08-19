@@ -1,11 +1,7 @@
+module.exports = (sequelize, DataTypes) => {
+    const User = sequelize.define('User', {
+        name: DataTypes.STRING,
+    });
 
-
-module.exports = {
-
-    User: class User {
-        constructor(id,nome){
-            this.id = id;
-            this.nome = nome;
-        }
-    }
+    return User;
 };

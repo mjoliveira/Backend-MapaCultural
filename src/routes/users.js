@@ -11,7 +11,7 @@ var userService = require('../services/userService');
  *     properties:
  *       id:
  *         type: integer
- *       nome:
+ *       name:
  *         type: string
  */
 
@@ -40,8 +40,35 @@ var userService = require('../services/userService');
  *              $ref: '#/definitions/User'
  * 
  */
-router.get('/', function(req, res, next) {
-  res.send(userService.getUsers());
+router.get('/', async (req, res, next) => {
+  const users = await userService.getUsers();
+  res.json(users);
+});
+
+/**
+ * @swagger
+ *
+ * /users:
+ *   post:
+ *    tags: [user]
+ *    description: Add Application User
+ *    requestBody:
+ *      content:
+ *       application/json:
+ *        schema:
+ *         $ref: '#/definitions/User'
+ *
+ *    responses:
+ *     201:
+ *       description: Created
+ *       content:
+ *        application/json:
+ *          schema:
+ *           $ref: '#/definitions/User'
+ *
+ */
+router.post('/', function(req, res, next) {
+  res.send(userService.saveUser(req.body.name));
 });
 
 module.exports = router;
