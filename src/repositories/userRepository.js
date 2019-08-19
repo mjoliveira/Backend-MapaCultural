@@ -1,10 +1,22 @@
-var User = require('../models/User');
+const { User } = require('../models');
 
 
 module.exports = {
     getUsers: function(){
-        //Busca de dados (Outro serviço ou Bd)
-        const user = new User.User(1,"Gabriel");
+        return new Promise((resolve, reject) => {
+            User.findAll().then(users => {
+                console.log(users);
+                resolve(users);
+            }).catch(err => {
+                console.log(err);
+                reject(err);
+            });
+        });
+    },
+    saveUser: function (name) {
+        const user = User.create({
+            name:name
+        });
         return user;
     }
 };
