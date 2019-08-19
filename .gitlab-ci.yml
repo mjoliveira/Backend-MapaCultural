@@ -10,6 +10,9 @@ cache:
 
 install_dependencies:
    stage: build
+   except:
+     - master
+     - dev
    script:
      - npm install
    artifacts:
@@ -18,4 +21,7 @@ install_dependencies:
 
 testing_testing:
   stage: test
+  except:
+    - master
+    - dev
   script: npm test
