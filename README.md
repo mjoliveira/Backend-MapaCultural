@@ -1,4 +1,5 @@
-##Passos para executar o projeto
+Passos para executar o projeto
+-----------------------------------
 
 ### MySQL no Docker
 
