@@ -40,7 +40,7 @@ const userService = require('../services/userService');
  *              $ref: '#/definitions/User'
  * 
  */
-router.get('/', async (req, res, next) => {
+router.get('/', async (req, res) => {
   const users = await userService.getUsers();
   res.json(users);
 });
@@ -67,7 +67,7 @@ router.get('/', async (req, res, next) => {
  *           $ref: '#/definitions/User'
  *
  */
-router.post('/', function(req, res, next) {
+router.post('/', function(req, res) {
   res.send(userService.saveUser(req.body.name));
 });
 

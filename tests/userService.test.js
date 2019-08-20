@@ -1,5 +1,4 @@
 const userService = require('../src/services/userService');
-const User = require('../src/models/User');
 
 jest.mock('../src/models/User', () => () => {
     const SequelizeMock = require("sequelize-mock");
@@ -9,7 +8,7 @@ jest.mock('../src/models/User', () => () => {
         name: "Gabriel",
         createdAt: "2019-01-01 13:30:31",
         updatedAt: "2019-01-01 13:30:31"
-    })
+    });
 });
 
 

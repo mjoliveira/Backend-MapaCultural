@@ -7,7 +7,6 @@ const swaggerJSDoc = require('swagger-jsdoc');
 const options = require('../swagger-options');
 
 //Import das rotas
-const indexRouter = require('./routes');
 const usersRouter = require('./routes/users');
 
 const app = express();
@@ -25,7 +24,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Adicionando rotas na aplicação
-app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 module.exports = app;

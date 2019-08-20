@@ -17,6 +17,7 @@
     "swagger-ui-express": "^4.0.7"
   },
   "devDependencies": {
+    "eslint": "^6.2.1",
     "jest": "^24.8.0",
     "sequelize-cli": "^5.5.0",
     "sequelize-mock": "^0.10.2"
