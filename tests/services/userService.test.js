@@ -1,6 +1,6 @@
-const userService = require('../src/services/userService');
+const userService = require('../../src/services/userService');
 
-jest.mock('../src/models/User', () => () => {
+jest.mock('../../src/models/User', () => () => {
     const SequelizeMock = require("sequelize-mock");
     const dbMock = new SequelizeMock();
     return dbMock.define('User',  {
