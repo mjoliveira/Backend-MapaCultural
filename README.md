@@ -18,3 +18,6 @@ Passos para executar o projeto
 1. Executar o comando ``` $  npx sequelize-cli db:migrate ```
 2. O banco de dados vai ser configurado conforme a pasta database do projeto
 
+### Criação de novas Tabelas e Models
+
+1.  Utilizar o [Sequelize-cli](https://github.com/sequelize/cli)
