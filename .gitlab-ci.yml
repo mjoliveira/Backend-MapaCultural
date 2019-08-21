@@ -16,6 +16,7 @@ install_dependencies:
    script:
      - npm install
      - ls -la
+     - docker-compose up --build -d
    artifacts:
      paths:
        - node_modules/
