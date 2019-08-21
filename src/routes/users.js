@@ -13,6 +13,17 @@ const userService = require('../services/userService');
  *         type: integer
  *       name:
  *         type: string
+ *       updatedAt:
+ *         type: string
+ *         format: date-time
+ *       createdAt:
+ *         type: string
+ *         format: date-time
+ *   User-Post:
+ *     type: object
+ *     properties:
+ *       name:
+ *         type: string
  */
 
 /**
@@ -56,7 +67,7 @@ router.get('/', async (req, res) => {
  *      content:
  *       application/json:
  *        schema:
- *         $ref: '#/definitions/User'
+ *          $ref: '#/definitions/User-Post'
  *
  *    responses:
  *     201:
@@ -67,8 +78,10 @@ router.get('/', async (req, res) => {
  *           $ref: '#/definitions/User'
  *
  */
-router.post('/', function(req, res) {
-  res.send(userService.saveUser(req.body.name));
+router.post('/', async function(req, res) {
+  const user = await userService.saveUser(req.body.name);
+  res.status(201);
+  res.json(user);
 });
 
 module.exports = router;

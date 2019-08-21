@@ -14,9 +14,16 @@ module.exports = {
         });
     },
     saveUser: function (name) {
-        const user = User.create({
-            name:name
+        return new Promise((resolve, reject) => {
+            User.create({
+                name: name
+            }).then(user => {
+                console.log(user);
+                resolve(user);
+            }).catch(err => {
+                console.log(err);
+                reject(err);
+            });
         });
-        return user;
     }
 };

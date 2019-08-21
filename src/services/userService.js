@@ -5,6 +5,8 @@ module.exports = {
         return userRepository.getUsers();
     },
     saveUser: function (name) {
-        return userRepository.saveUser(name);
+        let user = userRepository.saveUser(name);
+        console.log(user);
+        return user;
     }
 };
