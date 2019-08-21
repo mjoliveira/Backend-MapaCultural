@@ -15,6 +15,7 @@ install_dependencies:
      - dev
    script:
      - npm install
+     - ls -la
    artifacts:
      paths:
        - node_modules/
