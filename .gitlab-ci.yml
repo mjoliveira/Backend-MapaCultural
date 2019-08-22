@@ -25,4 +25,4 @@ testing_testing:
     - master
     - dev
   script: npm test
-  coverage: /All\sfiles.*?\s+(\d+.\d+)/
+  coverage: /All files\s*\|\s*([\d\.]+)/

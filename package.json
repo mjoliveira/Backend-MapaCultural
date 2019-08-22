@@ -26,7 +26,15 @@
   },
   "jest": {
     "collectCoverage": true,
-    "coverageReporters": ["json", "html"]
+    "verbose": true,
+    "coverageReporters": [
+      "text",
+      "json",
+      "html"
+    ],
+    "collectCoverageFrom": [
+      "src/services/*.js",
+      "src/repositories/*.js"
+    ]
   }
-
 }
