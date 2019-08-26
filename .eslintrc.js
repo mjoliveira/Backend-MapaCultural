@@ -16,6 +16,11 @@ module.exports = {
         "ecmaVersion": 2018
     },
     "rules": {
-        "semi": [ERROR]
+        "semi": [ERROR],
+        "no-empty": [WARN],
+        "for-direction": [WARN],
+        "dot-location": [WARN, "property"],
+        "comma-style": [WARN,"last"],
+        "comma-spacing": [WARN]
     }
 };
