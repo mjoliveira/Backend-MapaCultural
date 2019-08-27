@@ -21,6 +21,7 @@ module.exports = {
         "for-direction": [WARN],
         "dot-location": [WARN, "property"],
         "comma-style": [WARN,"last"],
-        "comma-spacing": [WARN]
+        "comma-spacing": [WARN],
+        "arrow-spacing": [ERROR]
     }
 };
