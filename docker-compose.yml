@@ -7,11 +7,11 @@ services:
     image: nodejs
     container_name: nodejs
     restart: always
-    env_file: .env
+    env_file: .env-docker
     ports:
       - "3001:3000"
     volumes:
-      - .:/usr/src/app
+      - ./src:/usr/src/app/src
       - node_modules:/usr/src/app/node_modules
     networks:
       - app-network
@@ -31,7 +31,7 @@ services:
       MYSQL_ROOT_PASSWORD: 'senha'
     ports:
       # <Port exposed> : < MySQL Port running inside container>
-      - '3306:3306'
+      - '3307:3306'
     expose:
       # Opens port 3306 on the container
       - '3306'
