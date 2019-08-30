@@ -7,7 +7,7 @@ const swaggerJSDoc = require('swagger-jsdoc');
 const options = require('../swagger-options');
 
 //Import das rotas
-const usersRouter = require('./routes/users');
+const usersRouter = require('./api/user/usersRest');
 
 const app = express();
 

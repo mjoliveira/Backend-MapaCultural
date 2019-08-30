@@ -1,4 +1,4 @@
-const userRepository = require("../repositories/userRepository");
+const userRepository = require("../../infrastructure/user/userRepository");
 
 module.exports = {
     getUsers: function () {
