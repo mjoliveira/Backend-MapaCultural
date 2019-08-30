@@ -4,9 +4,9 @@ Passos para executar o projeto
 ### MySQL no Docker
 
 1. Possuir Docker e Docker-Compose instalados no ambiente
-2. Certificar que a porta 3306 está liberada
-3. Executar o comando ``` $ docker-compose up ```
-4. O Banco de dados deve estar executando na porta 3306 pronto para configuração
+2. Certificar que a porta 3307 está liberada
+3. Executar o comando ``` $ docker-compose up db_mysql```
+4. O Banco de dados deve estar executando na porta 3307 pronto para configuração
 
 ### Instalando/Atualizando Dependencias
 
@@ -21,3 +21,7 @@ Passos para executar o projeto
 ### Criação de novas Tabelas e Models
 
 1.  Utilizar o [Sequelize-cli](https://github.com/sequelize/cli)
+
+### Execução do ambiente de desenvolvimento em docker
+
+1. Executar o commando ``` $ docker-compose up nodejs ```

@@ -7,7 +7,7 @@ const options = {
       },
     },
     // Path to the API docs
-    apis: ['./src/routes/*.js'],
+    apis: ['./src/api/*Rest.js'],
 };
 
 module.exports = options;

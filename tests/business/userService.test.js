@@ -1,4 +1,4 @@
-const userService = require('../../src/services/userService');
+const userService = require('../../src/business/user/userService');
 
 jest.mock('../../src/models/User', () => () => {
     const SequelizeMock = require("sequelize-mock");
