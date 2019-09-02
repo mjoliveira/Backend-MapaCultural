@@ -59,6 +59,16 @@ module.exports = (sequelize, DataTypes) => {
 
   Instituicao.associate = models => {
     Instituicao.hasMany(models.Imagem);
+
+  Instituicao.associate = models => {
+    Instituicao.hasMany(models.Rede);
+  }
+  Instituicao.associate = models => {
+    Instituicao.hasMany(models.Horario);
+  }
+  Instituicao.associate = models => {
+    Itinerarioinstituicoes.hasMany(models.Itinerarioinstituicoes);
+  }
 };
 
   return Instituicao;
