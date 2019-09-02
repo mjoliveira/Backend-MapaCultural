@@ -7,4 +7,5 @@ module.exports = {
     saveUser: function (name) {
         return userRepository.saveUser(name);
     }
+
 };
