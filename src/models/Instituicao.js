@@ -67,7 +67,7 @@ module.exports = (sequelize, DataTypes) => {
     Instituicao.hasMany(models.Horario);
   }
   Instituicao.associate = models => {
-    Itinerarioinstituicoes.hasMany(models.Itinerarioinstituicoes);
+    Itinerarioinstituicoes.hasMany(models.Itinerario);
   }
 };
 

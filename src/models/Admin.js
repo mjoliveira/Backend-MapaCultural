@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Email = sequelize.define('Admin', {
+    const Admin = sequelize.define('Admin', {
         id: {
             type: DataTypes.INTEGER,
             primaryKey: true,

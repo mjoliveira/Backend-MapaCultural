@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Imagem = sequelize.define("Itinerario", {
+    const Itinerario = sequelize.define("Itinerario", {
       id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
