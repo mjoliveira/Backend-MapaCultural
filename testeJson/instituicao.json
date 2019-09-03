@@ -1,0 +1,13 @@
+[{
+  "id": 0,
+  "name" : "ibere",
+  "distance": 0.0,
+  "open" : false
+},
+  {
+    "id": 2,
+    "name" : "mario quintana",
+    "distance": 2.0,
+    "open" : true
+  }
+]
