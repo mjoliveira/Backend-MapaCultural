@@ -10,11 +10,11 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         distance: {
-            type: DataTypes.double,
+            type: DataTypes.INTEGER,
             allowNull: false
         },
         open: {
-            type: DataTypes.boolean,
+            type: DataTypes.STRING,
             allowNull: false
         }
 

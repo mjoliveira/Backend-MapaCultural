@@ -8,7 +8,7 @@ const options = require('../swagger-options');
 
 //Import das rotas
 const usersRouter = require('./api/user/usersRest');
-// const instituicaoRouter = require('./api/instituicao/instituicaoRest');
+const instituicaoRouter = require('./api/instituicao/instituicaoRest');
 
 const app = express();
 
@@ -26,6 +26,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Adicionando rotas na aplicação
 app.use('/users', usersRouter);
-// app.use('/instituicao', instituicaoRouter);
+app.use('/instituicao', instituicaoRouter);
 
 module.exports = app;
