@@ -6,5 +6,10 @@ module.exports = (sequelize, DataTypes) => {
     }
     
   });
+
+  Itinerarioinstituicoes.associate = models => {
+    Itinerarioinstituicoes.hasMany(models.Itinerario);
+  }
+
   return Itinerarioinstituicoes;
 };

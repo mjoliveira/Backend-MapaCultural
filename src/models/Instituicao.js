@@ -59,7 +59,7 @@ module.exports = (sequelize, DataTypes) => {
 
   Instituicao.associate = models => {
     Instituicao.hasMany(models.Imagem);
-
+  } 
   Instituicao.associate = models => {
     Instituicao.hasMany(models.Rede);
   }
@@ -67,9 +67,9 @@ module.exports = (sequelize, DataTypes) => {
     Instituicao.hasMany(models.Horario);
   }
   Instituicao.associate = models => {
-    Itinerarioinstituicoes.hasMany(models.Itinerario);
+    Instituicao.hasMany(models.Itinerarioinstituicoes);
   }
-};
+
 
   return Instituicao;
 };
