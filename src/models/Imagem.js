@@ -1,20 +1,20 @@
 module.exports = (sequelize, DataTypes) => {
-    const Email = sequelize.define('Email', {
+    const Imagem = sequelize.define("Imagem", {
             id: {
                 type: DataTypes.INTEGER,
                 primaryKey: true,
                 autoIncrement: true
             },
-            address: {
+
+            url: {
                 type: DataTypes.STRING,
-                allowNull: false
-            }
+                AllowNull: true
+            },
         },
         {
             timestamps: false,
             freezeTableName: true,
-            tableName: 'Emails'
+            tableName: 'Imagens'
         });
-
-    return Email;
+    return Imagem;
 };

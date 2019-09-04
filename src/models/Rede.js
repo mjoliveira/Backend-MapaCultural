@@ -1,20 +1,20 @@
 module.exports = (sequelize, DataTypes) => {
-    const Email = sequelize.define('Email', {
+    const Rede = sequelize.define("Rede", {
             id: {
                 type: DataTypes.INTEGER,
                 primaryKey: true,
                 autoIncrement: true
             },
-            address: {
+
+            redeSocial: {
                 type: DataTypes.STRING,
-                allowNull: false
+                AllowNull: true
             }
         },
         {
             timestamps: false,
             freezeTableName: true,
-            tableName: 'Emails'
+            tableName: 'Redes'
         });
-
-    return Email;
+    return Rede;
 };
