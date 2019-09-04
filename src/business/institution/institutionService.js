@@ -1,7 +1,7 @@
-const institutionRepository = require("../../infrastructure/institution/institutionRepostory");
+const institutionRepository = require("../../infrastructure/institution/institutionRepository");
 
 module.exports = {
-    saveInstitution: function (name) {
-        return institutionRepository.saveInstitution(name);
+    saveInstitution: function (institution) {
+        return institutionRepository.saveInstitution(institution);
     }
 };

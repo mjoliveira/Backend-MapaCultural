@@ -26,6 +26,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Adicionando rotas na aplicação
 app.use('/users', usersRouter);
-app.use('/institutions', institutionRouter);
+app.use('/api/v1/institutions', institutionRouter);
 
 module.exports = app;

@@ -16,11 +16,6 @@ module.exports = (sequelize, DataTypes) => {
                 allowNUll: false
             },
 
-            aberto: {
-                type: DataTypes.BOOLEAN,
-                allowNull: false
-            },
-
             tempoVisita: {
                 type: DataTypes.INTEGER,
                 allowNull: false

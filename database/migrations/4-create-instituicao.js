@@ -16,11 +16,6 @@ module.exports = {
                 type: DataTypes.STRING
 
             },
-            aberto: {
-                allowNull: false,
-                type: DataTypes.BOOLEAN,
-
-            },
             tempoVisita: {
                 allowNull: false,
                 type: DataTypes.INTEGER

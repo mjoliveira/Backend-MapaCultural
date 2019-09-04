@@ -1,11 +1,13 @@
-const { institution } = require('../../models');
+const { Instituicao } = require('../../models');
 
 module.exports = {
-    saveInstitution: function (name) {
+    saveInstitution: function (instutition) {
         return new Promise((resolve, reject) => {
-                console.log(name);
-                resolve(name);
+            Instituicao.create(instutition).then(instutition => {
+                resolve(instutition);
+            }).catch(err => {
+                reject(err);
+            })
         });
     }
 }
-

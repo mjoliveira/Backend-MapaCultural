@@ -2,9 +2,30 @@ const express = require('express');
 const router = express.Router();
 const institutionService = require('../../business/institution/institutionService');
 
-//Método Post
+/**
+ * @swagger
+ *
+ * /api/v1/institutions:
+ *   post:
+ *    tags: [institutions]
+ *    description: Add Application Institution
+ *    requestBody:
+ *      content:
+ *       application/json:
+ *        schema:
+ *          $ref: '#/definitions/Institution-Post'
+ *
+ *    responses:
+ *     201:
+ *       description: Created
+ *       content:
+ *        application/json:
+ *          schema:
+ *           $ref: '#/definitions/Institution'
+ *
+ */
 router.post('/', async function(req, res) {
-    const institution = await institutionService.saveInstitution(req.body.name);
+    const institution = await institutionService.saveInstitution(req.body);
     res.status(201);
     res.json(institution);
   });
