@@ -3,11 +3,21 @@ module.exports = {
         return queryInterface.createTable("ItinerarioInstituicoes", {
             ItinerarioId: {
                 type: Sequelize.INTEGER,
-                allowNull: false
+                references: {
+                    model: "Itinerarios",
+                    key: "id"
+                },
+                onUpdate: "CASCADE",
+                onDelete: "SET NULL"
             },
             InstituicaoId: {
                 type: Sequelize.INTEGER,
-                allowNull: false
+                references: {
+                    model: "Instituicoes",
+                    key: "id"
+                },
+                onUpdate: "CASCADE",
+                onDelete: "SET NULL"
             },
             ordem: {
                 type: Sequelize.INTEGER,

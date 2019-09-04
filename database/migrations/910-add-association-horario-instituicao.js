@@ -3,7 +3,7 @@ module.exports = {
         return queryInterface.addColumn("Horarios", "InstituicaoID", {
             type: Sequelize.INTEGER,
             references: {
-                model: "Instituicao",
+                model: "Instituicoes",
                 key: "id"
             },
             onUpdate: "CASCADE",
