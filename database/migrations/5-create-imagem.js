@@ -1,20 +1,22 @@
 module.exports = {
     up: (queryInterface, DataTypes) => {
-        return queryInterface.createTable('Emails', {
+        return queryInterface.createTable('Imagens', {
             id: {
                 allowNull: false,
                 autoIncrement: true,
                 primaryKey: true,
                 type: DataTypes.INTEGER,
             },
-            address: {
+
+            url: {
                 allowNull: false,
-                type: DataTypes.STRING,
-            },
+                type: DataTypes.STRING
+
+
+            }
         });
     },
-
     down: (queryInterface) => {
-        return queryInterface.dropTable('Emails');
+        return queryInterface.dropTable('Imagens');
     }
 };
