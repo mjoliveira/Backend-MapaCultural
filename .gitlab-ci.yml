@@ -19,6 +19,13 @@ install_dependencies:
      paths:
        - node_modules/
 
+testing_lint:
+  stage: test
+  except:
+    - master
+    - dev
+  script: npm run lint
+
 testing_testing:
   stage: test
   except:
