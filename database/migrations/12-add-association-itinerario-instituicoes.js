@@ -1,17 +1,22 @@
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.addColumn("Itinerarios", "InstituicaoID", {
-      type: Sequelize.INTEGER,
-      references: {
-        model: "Instituicao",
-        key: "id"
-      },
-      onUpdate: "CASCADE",
-      onDelete: "SET NULL"
-    });
-  },
+    up: (queryInterface, Sequelize) => {
+        return queryInterface.createTable("ItinerarioInstituicoes", {
+            ItinerarioId: {
+                type: Sequelize.INTEGER,
+                allowNull: false
+            },
+            InstituicaoId: {
+                type: Sequelize.INTEGER,
+                allowNull: false
+            },
+            ordem: {
+                type: Sequelize.INTEGER,
+                allowNull: false
+            }
+        });
+    },
 
-  down: queryInterface => {
-    return queryInterface.removeColumn("Itinerarios", "InstituicaoID");
-  }
+    down: queryInterface => {
+        return queryInterface.dropTable("ItinerarioInstituicoes");
+    }
 };
