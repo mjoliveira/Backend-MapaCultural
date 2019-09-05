@@ -31,7 +31,23 @@ router.post('/', async function(req, res) {
   });
 
 
-  router.get('/', async (req, res) => {
+/**
+ * @swagger
+ *
+ * /api/v1/institutions:
+ *   get:
+ *     tags: [institutions]
+ *     description: Get Application Institutions
+ *     responses:
+ *       200:
+ *         description: Application Institutions
+ *         content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/definitions/Institutions'
+ * 
+ */
+router.get('/', async (req, res) => {
     const instituicao = await institutionService.getInstitution();
     res.json(instituicao);
 });
