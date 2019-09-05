@@ -1,11 +1,19 @@
 module.exports = (sequelize, DataTypes) => {
-    const Email = sequelize.define('Email', {
+    const Admin = sequelize.define('Admin', {
             id: {
                 type: DataTypes.INTEGER,
                 primaryKey: true,
                 autoIncrement: true
             },
-            address: {
+            nome: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            login: {
+                type: DataTypes.STRING,
+                allowNull: false
+            },
+            senha: {
                 type: DataTypes.STRING,
                 allowNull: false
             }
@@ -13,8 +21,8 @@ module.exports = (sequelize, DataTypes) => {
         {
             timestamps: false,
             freezeTableName: true,
-            tableName: 'Emails'
+            tableName: 'Admins'
         });
 
-    return Email;
+    return Admin;
 };
