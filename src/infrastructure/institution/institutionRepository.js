@@ -7,7 +7,7 @@ module.exports = {
                 resolve(instutition);
             }).catch(err => {
                 reject(err);
-            })
+            });
         });
     },
 
@@ -22,4 +22,4 @@ module.exports = {
             });
         });
     }
-}
+};
