@@ -1,7 +1,7 @@
-const instituicaoMock = require("../../../testeJson/instituicao.json");
+const instituicaoRepository = require("../../infrastructure/instituicao/instituicaoRepository");
 module.exports = {
     getInstituicao: function () {
-        return instituicaoMock;
+        return instituicaoRepository.getInstituicao();
     }
 
 };
