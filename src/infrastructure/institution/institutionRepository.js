@@ -9,5 +9,17 @@ module.exports = {
                 reject(err);
             })
         });
+    },
+
+    getInstituicao: function(){
+        return new Promise((resolve, reject) => {
+            Instituicao.findAll().then(instituicao => {
+                console.log(instituicao);
+                resolve(instituicao);
+            }).catch(err => {
+                console.log(err);
+                reject(err);
+            });
+        });
     }
 }

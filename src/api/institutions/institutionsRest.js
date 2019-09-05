@@ -30,4 +30,10 @@ router.post('/', async function(req, res) {
     res.json(institution);
   });
 
+
+  router.get('/', async (req, res) => {
+    const instituicao = await institutionService.getInstitution();
+    res.json(instituicao);
+});
+
 module.exports = router;

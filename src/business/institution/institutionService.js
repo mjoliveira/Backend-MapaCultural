@@ -3,5 +3,9 @@ const institutionRepository = require("../../infrastructure/institution/institut
 module.exports = {
     saveInstitution: function (institution) {
         return institutionRepository.saveInstitution(institution);
+    },
+
+    getInstitution: function () {
+        return institutionRepository.getInstituicao();
     }
 };
