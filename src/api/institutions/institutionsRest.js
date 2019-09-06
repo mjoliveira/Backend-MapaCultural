@@ -7,59 +7,34 @@ const institutionService = require('../../business/institution/institutionServic
  * @swagger
  *
  * definitions:
- *   Institutions:
- *     type: object
- *     properties:
- *       id:
- *         type: integer
- *       nome:
- *         type: string
- *       endereco:
- *         type: string
- *       tempoVisita:
- *         type: integer
- *       descricao:
- *         type: string
- *       latitude:
- *         type: double
- *       longitude:
- *         type: double
- *       email:
- *         type: string
- *       telefone:
- *         type: string
- *       observacoes:
- *         type: string
- *   Institutions-Post:
- *     type: object
- *     properties:
- *       id:
- *         type: integer
- *       nome:
- *         type: string
- *       endereco:
- *         type: string
- *       tempoVisita:
- *         type: integer
- *       descricao:
- *         type: string
- *       latitude:
- *         type: double
- *       longitude:
- *         type: double
- *       email:
- *         type: string
- *       telefone:
- *         type: string
- *       observacoes:
- *         type: string
+ *  Institution:
+ *   type: object
+ *   properties:
+ *    descricao:
+ *     type: string
+ *    endereco:
+ *     type: string
+ *    latitude:
+ *     type: number
+ *     format: float
+ *    longitude:
+ *     type: number
+ *     format: float
+ *    nome:
+ *     type: string
+ *    observacoes:
+ *     type: string
+ *    telefone:
+ *     type: string
+ *    tempoVisita:
+ *     type: integer
  */
 
 /**
  * @swagger
  * tags:
  *   - name: institutions
- *     description: Tudo sobre Instituições
+ *     description: Tudo sobre Instituicoes
  */
 
 /**
@@ -73,8 +48,7 @@ const institutionService = require('../../business/institution/institutionServic
  *      content:
  *       application/json:
  *        schema:
- *          $ref: '#/definitions/Institutions-Post'
- *
+ *          $ref: '#/definitions/Institution'
  *    responses:
  *     201:
  *       description: Created
@@ -90,7 +64,6 @@ router.post('/', async function (req, res) {
   res.json(institution);
 });
 
-
 /**
  * @swagger
  *
@@ -104,8 +77,8 @@ router.post('/', async function (req, res) {
  *         content:
  *          application/json:
  *            schema:
- *              $ref: '#/definitions/Institutions'
- * 
+ *              $ref: '#/definitions/Institution'
+ *
  */
 router.get('/', async (req, res) => {
   const instituicao = await institutionService.getInstitution();
