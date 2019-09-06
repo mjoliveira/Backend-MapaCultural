@@ -43,6 +43,11 @@ const institutionService = require('../../business/institution/institutionServic
  *   post:
  *    tags: [institutions]
  *    description: Add Application Institution
+ *    requestBody:
+ *      content:
+ *       application/json:
+ *        schema:
+ *          $ref: '#/definitions/Institution'
  *    responses:
  *     201:
  *       description: Created
