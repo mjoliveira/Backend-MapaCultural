@@ -47,7 +47,7 @@ services:
     ports:
       - "4000:3000"
     environment:
-      - REACT_APP_API_ENDPOINT=http://www.hml.ages.pucrs.br:5001/
+      - REACT_APP_API_ENDPOINT=http://www.hml.ages.pucrs.br:4301/
     networks:
       - ibere-network
     volumes:
