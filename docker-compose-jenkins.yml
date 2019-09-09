@@ -52,7 +52,7 @@ services:
       - ibere-network
     volumes:
       - "./ibere-web:/app"
-    command: sh -c "yarn install && yarn start"
+    command: sh -c "npm install && npm start"
 
 networks:
   ibere-network:
