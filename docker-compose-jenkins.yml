@@ -1,0 +1,58 @@
+version: "2"
+
+services:
+  ibere-db:
+    container_name: "ibere-db"
+    image: "mysql:5.7"
+    ports:
+      - "4302:3306"
+    volumes:
+      - /vol/ibere/db:/var/lib/mysql:rw
+    environment:
+      MYSQL_ROOT_PASSWORD: "senha"
+      MYSQL_DATABASE: "ibere"
+    networks:
+      - ibere-network
+
+  ibere-api:
+    container_name: "ibere-api"
+    image: node:10
+    working_dir: /app
+    depends_on:
+      - ibere-db
+    expose:
+      - "4301"
+    ports:
+      - "4301:4000"
+    environment:
+      - NODE_ENV=production
+      - PORT=4000
+      - DB_USER=root
+      - DB_PASSWORD=senha
+      - DB_NAME=ibere
+      - DB_HOST=ibere-db
+      - DB_PORT=3306
+      - JWT_SECRET=ibere2019
+      - JWT_EXPIRATION=100000
+    volumes:
+      - "./ibere-api:/app"
+    command: sh -c "chmod +x ./wait-for-it.sh && ./wait-for-it.sh -t 0 ibere-db:3306 && npm install && npm sequelize db:migrate && yarn start"
+    networks:
+      - ibere-network
+
+  ibere-web:
+    container_name: "ibere-web"
+    image: "node:10"
+    working_dir: /app
+    ports:
+      - "4000:3000"
+    environment:
+      - REACT_APP_API_ENDPOINT=http://www.hml.ages.pucrs.br:5001/
+    networks:
+      - ibere-network
+    volumes:
+      - "./ibere-web:/app"
+    command: sh -c "yarn install && yarn start"
+
+networks:
+  ibere-network:
