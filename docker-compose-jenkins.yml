@@ -12,7 +12,7 @@ services:
       - /vol/ibere/db:/var/lib/mysql:rw
     environment:
       MYSQL_ROOT_PASSWORD: "senha"
-      MYSQL_DATABASE: "ibere"
+      MYSQL_DATABASE: "db"
     networks:
       - ibere-network
 
@@ -30,7 +30,7 @@ services:
       - "4301"
     ports:
       - "4301:3000"
-    command: sh -c "npm install && npm sequelize db:migrate && npm start"
+    command: ["npm", "start"]
     networks:
       - ibere-network
 
@@ -44,7 +44,6 @@ services:
       - "8700:3000"
     networks:
       - ibere-network
-
 
 networks:
   ibere-network:

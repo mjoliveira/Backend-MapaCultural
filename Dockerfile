@@ -12,4 +12,5 @@ COPY . /usr/src/app
 
 EXPOSE 4301
 
-#CMD ["npm", "run", "dev"]
+
+
