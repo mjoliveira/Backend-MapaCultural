@@ -1,7 +1,7 @@
 const { Instituicao } = require('../../models');
 
 module.exports = {
-    saveInstitution: function (instutition) {
+    salvarInstituicao: function (instutition) {
         return new Promise((resolve, reject) => {
             Instituicao.create(instutition).then(instutition => {
                 resolve(instutition);
@@ -11,7 +11,7 @@ module.exports = {
         });
     },
 
-    getInstituicao: function(){
+    buscarInstituicoes: function(){
         return new Promise((resolve, reject) => {
             Instituicao.findAll().then(instituicao => {
                 console.log(instituicao);

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const institutionService = require('../../business/institution/institutionService');
+const institutionService = require('../../business/instituicao/institutionService');
 
 
 /**
@@ -33,16 +33,16 @@ const institutionService = require('../../business/institution/institutionServic
 /**
  * @swagger
  * tags:
- *   - name: institutions
+ *   - name: instituicao
  *     description: Tudo sobre Instituicoes
  */
 
 /**
  * @swagger
  *
- * /api/v1/institutions:
+ * /api/v1/instituicao:
  *   post:
- *    tags: [institutions]
+ *    tags: [instituicao]
  *    description: Add Application Institution
  *    requestBody:
  *      content:
@@ -55,11 +55,11 @@ const institutionService = require('../../business/institution/institutionServic
  *       content:
  *        application/json:
  *          schema:
- *           $ref: '#/definitions/Institutions'
+ *           $ref: '#/definitions/Institution'
  *
  */
 router.post('/', async function (req, res) {
-  const institution = await institutionService.saveInstitution(req.body);
+  const institution = await institutionService.salvarInstituicao(req.body);
   res.status(201);
   res.json(institution);
 });
@@ -67,9 +67,9 @@ router.post('/', async function (req, res) {
 /**
  * @swagger
  *
- * /api/v1/institutions:
+ * /api/v1/instituicao:
  *   get:
- *     tags: [institutions]
+ *     tags: [instituicao]
  *     description: Get Application Institutions
  *     responses:
  *       200:
@@ -81,7 +81,7 @@ router.post('/', async function (req, res) {
  *
  */
 router.get('/', async (req, res) => {
-  const instituicao = await institutionService.getInstitution();
+  const instituicao = await institutionService.buscarInstituicoes();
   res.json(instituicao);
 });
 
