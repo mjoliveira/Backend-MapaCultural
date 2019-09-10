@@ -1,8 +1,8 @@
 version: "2"
 
 services:
-  ibere-db:
-    container_name: "ibere-db"
+  iberedb:
+    container_name: "iberedb"
     image: "mysql:5.7"
     ports:
       - "4302:3306"
@@ -14,29 +14,21 @@ services:
     networks:
       - ibere-network
 
-  ibere-api:
-    container_name: "ibere-api"
-    image: node:10
-    working_dir: /app
+  ibere_api:
+    container_name: "ibere_api"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nodejs
+    restart: always
+    env_file: .env-docker
     depends_on:
-      - ibere-db
+      - iberedb
     expose:
       - "4301"
     ports:
       - "4301:3000"
-    environment:
-      - NODE_ENV=production
-      - PORT=3000
-      - DB_USER=root
-      - DB_PASSWORD=senha
-      - DB_NAME=ibere
-      - DB_HOST=ibere-db
-      - DB_PORT=3306
-      - JWT_SECRET=ibere2019
-      - JWT_EXPIRATION=100000
-    volumes:
-      - "./ibere-api:/app"
-    command: sh -c "chmod +x ./wait-for-it.sh && ./wait-for-it.sh -t 0 ibere-db:3306 && npm install && npm sequelize db:migrate && yarn start"
+    command: sh -c "npm install && npm sequelize db:migrate && npm start"
     networks:
       - ibere-network
 
