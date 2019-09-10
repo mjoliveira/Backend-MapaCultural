@@ -1,0 +1,70 @@
+[
+  {
+    "id": 0,
+    "name": "ibere",
+    "address": "Av Ipiranga 1070",
+    "open": false,
+    "visitation_time": 0.0,
+    "visitation_hours": [
+      {
+        "day": "seg",
+        "opening_time": "08:25",
+        "closing_time": "16:40"
+      },
+      {
+        "day": "ter",
+        "opening_time": "08:25",
+        "closing_time": "16:40"
+      }
+    ],
+    "images": [
+      "http://www.google.com",
+      "ZHNpamZkamlmZHdpamZrcWZpZXdkZGtvcXdka28="
+    ],
+    "summary": "summary",
+    "social_media": [
+      "facebook",
+      "instagram",
+      "anyOther"
+    ],
+    "latitude": "latitude",
+    "longitude": "longitude",
+    "e-mail": "test@test.com",
+    "telephone": "0512345678",
+    "observations": "string"
+  },
+  {
+    "id": 1,
+    "name": "Teste",
+    "address": "Av Ipiranga 1070",
+    "open": true,
+    "visitation_time": 0.0,
+    "visitation_hours": [
+      {
+        "day": "seg",
+        "opening_time": "08:25",
+        "closing_time": "16:40"
+      },
+      {
+        "day": "ter",
+        "opening_time": "08:25",
+        "closing_time": "16:40"
+      }
+    ],
+    "images": [
+      "http://www.google.com",
+      "ZHNpamZkamlmZHdpamZrcWZpZXdkZGtvcXdka28="
+    ],
+    "summary": "summary",
+    "social_media": [
+      "facebook",
+      "instagram",
+      "anyOther"
+    ],
+    "latitude": "latitude",
+    "longitude": "longitude",
+    "e-mail": "test@test.com",
+    "telephone": "0512345678",
+    "observations": "string"
+  }
+]
