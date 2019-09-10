@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const institutionService = require('../../business/instituicao/institutionService');
+const institutionService = require('../../business/instituicao/instituicaoService');
 
 
 /**
