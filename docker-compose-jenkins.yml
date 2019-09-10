@@ -22,7 +22,7 @@ services:
       context: .
       dockerfile: Dockerfile
     image: ibere_api:latest
-    restart: always
+#    restart: always
     env_file: .env-docker
     depends_on:
       - iberedb
@@ -41,7 +41,7 @@ services:
       dockerfile: Dockerfile_web
     image: ibere_web:latest
     ports:
-      - "4300:3000"
+      - "8700:3000"
     networks:
       - ibere-network
 
