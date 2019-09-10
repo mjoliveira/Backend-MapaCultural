@@ -6,6 +6,8 @@ services:
     image: "mysql:5.7"
     ports:
       - "4302:3306"
+    expose:
+      - "4302"
     volumes:
       - /vol/ibere/db:/var/lib/mysql:rw
     environment:
@@ -19,7 +21,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: nodejs
+    image: ibere_api:latest
     restart: always
     env_file: .env-docker
     depends_on:
@@ -32,19 +34,17 @@ services:
     networks:
       - ibere-network
 
-  ibere-web:
-    container_name: "ibere-web"
-    image: "node:10"
-    working_dir: /app
+  ibere_web:
+    container_name: "ibere_web"
+    build:
+      context: .
+      dockerfile: Dockerfile_web
+    image: ibere_web:latest
     ports:
       - "4300:3000"
-    environment:
-      - REACT_APP_API_ENDPOINT=http://www.hml.ages.pucrs.br:4301/
     networks:
       - ibere-network
-    volumes:
-      - "./ibere-web:/app"
-    command: sh -c "npm install && npm start"
+
 
 networks:
   ibere-network:
