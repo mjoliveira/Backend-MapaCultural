@@ -1,0 +1,49 @@
+version: "2"
+
+services:
+  iberedb:
+    container_name: "iberedb"
+    image: "mysql:5.7"
+    ports:
+      - "4302:3306"
+    expose:
+      - "4302"
+    volumes:
+      - /vol/ibere/db:/var/lib/mysql:rw
+    environment:
+      MYSQL_ROOT_PASSWORD: "senha"
+      MYSQL_DATABASE: "db"
+    networks:
+      - ibere-network
+
+  ibere_api:
+    container_name: "ibere_api"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ibere_api:latest
+#    restart: always
+    env_file: .env-docker
+    depends_on:
+      - iberedb
+    expose:
+      - "4301"
+    ports:
+      - "4301:3000"
+    command: ["npm", "start"]
+    networks:
+      - ibere-network
+
+  ibere_web:
+    container_name: "ibere_web"
+    build:
+      context: .
+      dockerfile: Dockerfile_web
+    image: ibere_web:latest
+    ports:
+      - "8700:3000"
+    networks:
+      - ibere-network
+
+networks:
+  ibere-network:
