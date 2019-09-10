@@ -23,10 +23,10 @@ services:
     expose:
       - "4301"
     ports:
-      - "4301:4000"
+      - "4301:3000"
     environment:
       - NODE_ENV=production
-      - PORT=4000
+      - PORT=3000
       - DB_USER=root
       - DB_PASSWORD=senha
       - DB_NAME=ibere
@@ -45,7 +45,7 @@ services:
     image: "node:10"
     working_dir: /app
     ports:
-      - "4000:3000"
+      - "4300:3000"
     environment:
       - REACT_APP_API_ENDPOINT=http://www.hml.ages.pucrs.br:4301/
     networks:
