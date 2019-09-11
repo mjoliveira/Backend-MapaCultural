@@ -30,7 +30,7 @@ services:
       - "4301"
     ports:
       - "4301:3000"
-    command: ["npx","sequelize","db:migration","&&","npm", "start"]
+    command: ["npx","sequelize","db:migrate","&&","npm", "start"]
     networks:
       - ibere-network
 
