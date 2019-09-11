@@ -41,9 +41,9 @@ services:
       dockerfile: Dockerfile_web
     image: ibere_web:latest
     expose:
-      - "4300"
+      - "8901"
     ports:
-      - "4300:3000"
+      - "8901:3000"
     networks:
       - ibere-network
 
