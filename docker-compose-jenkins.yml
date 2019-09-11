@@ -29,7 +29,7 @@ services:
     expose:
       - "4301"
     ports:
-      - "4301:3000"
+      - "4301:4000"
     command: ["npx","sequelize","db:migrate","&&","npm", "start"]
     networks:
       - ibere-network
@@ -41,9 +41,9 @@ services:
       dockerfile: Dockerfile_web
     image: ibere_web:latest
     expose:
-      - "8901"
+      - "4300"
     ports:
-      - "8901:3000"
+      - "4300:3000"
     networks:
       - ibere-network
 
