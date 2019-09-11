@@ -12,7 +12,7 @@ services:
       - /vol/ibere/db:/var/lib/mysql:rw
     environment:
       MYSQL_ROOT_PASSWORD: "senha"
-      MYSQL_DATABASE: "db"
+      MYSQL_DATABASE: "ibere"
     networks:
       - ibere-network
 
@@ -29,7 +29,7 @@ services:
     expose:
       - "4301"
     ports:
-      - "4301:4000"
+      - "4301:3000"
     command: ["./wait-for-it.sh", "-t", "0", "iberedb:3306", "--","npx","sequelize","db:migrate","&&","npm","start", ]
     networks:
       - ibere-network
