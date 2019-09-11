@@ -43,7 +43,7 @@ services:
     expose:
       - "4300"
     ports:
-      - "4300:3000"
+      - "4300:80"
     networks:
       - ibere-network
 
