@@ -1,14 +1,16 @@
 FROM node:latest
 
-RUN mkdir -p /usr/src/app
+RUN mkdir -p /app
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
-COPY package*.json /usr/src/app/
+COPY package*.json /app/
 
 RUN npm install
 
-COPY . /usr/src/app
+COPY . /app
+
+RUN wget https://github.com/vishnubob/wait-for-it/raw/master/wait-for-it.sh -O wait-for-it.sh && chmod +x wait-for-it.sh
 
 EXPOSE 4301
 
