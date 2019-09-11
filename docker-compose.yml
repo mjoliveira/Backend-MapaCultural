@@ -1,26 +1,24 @@
 version: '2.0'
 services:
-  nodejs:
+  api:
     build:
       context: .
       dockerfile: Dockerfile
     image: nodejs
-    container_name: nodejs
+    container_name: api
     restart: always
     env_file: .env-docker
     ports:
       - "3001:3000"
-    volumes:
-      - ./src:/usr/src/app/src
-      - node_modules:/usr/src/app/node_modules
     networks:
       - app-network
     depends_on:
-      - db_mysql
-  db_mysql:
+      - iberedb
+    command: ["./wait-for-it.sh", "-t", "0", "iberedb:3306", "--", "npm","start", ]
+  iberedb:
     image: mysql:5.7
     restart: always
-    container_name: db_mysql
+    container_name: iberedb
     environment:
       MYSQL_DATABASE: 'db'
       # So you don't have to use root, but you can if you like
@@ -37,7 +35,7 @@ services:
       - '3306'
       # Where our data will be persisted
     volumes:
-      - my-db:/var/lib/mysql
+      - iberedb:/var/lib/mysql
     networks:
       - app-network
 # Networks
@@ -46,5 +44,4 @@ networks:
     driver: bridge
 # Names our volume
 volumes:
-  my-db:
-  node_modules:
+  iberedb:

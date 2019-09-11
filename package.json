@@ -36,8 +36,7 @@
       "html"
     ],
     "collectCoverageFrom": [
-      "src/business/**/*.js",
-      "src/infrastructure/**/*.js"
+      "src/business/**/*.js"
     ]
   }
 }
