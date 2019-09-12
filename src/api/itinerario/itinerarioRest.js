@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-// const itinerarioService = require('../../business/itinerario/itinerarioService');
+const itinerarioService = require('../../business/itinerario/itinerarioService');
 
 /**
  * @swagger
  *
  * definitions:
- *  Institution:
+ *  Itinerario:
  *   type: object
  *   properties:
  *    tempoCaminhada:
@@ -27,6 +27,23 @@ const router = express.Router();
  * tags:
  *   - name: itinerario
  *     description: Tudo sobre Itinerario
+ */
+
+ /**
+ * @swagger
+ *
+ * /api/v1/itinerario:
+ *   get:
+ *     tags: [itinerario]
+ *     description: Get Itinerarios
+ *     responses:
+ *       200:
+ *         description: Application Itinerario
+ *         content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/definitions/Itinerario'
+ *
  */
 router.get('/itinerios', async (req, res) => {
     try {
