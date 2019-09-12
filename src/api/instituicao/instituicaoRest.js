@@ -81,8 +81,12 @@ router.post('/', async function (req, res) {
  *
  */
 router.get('/', async (req, res) => {
-  const instituicao = await institutionService.buscarInstituicoes();
-  res.json(instituicao);
+  try {
+    const instituicao = await institutionService.buscarInstituicoes();
+    res.json(instituicao);
+  } catch (e) {
+     res.status(e.statusCode).send(e);
+   }
 });
 
 module.exports = router;
