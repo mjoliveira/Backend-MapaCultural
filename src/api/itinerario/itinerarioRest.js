@@ -45,11 +45,12 @@ const itinerarioService = require('../../business/itinerario/itinerarioService')
  *              $ref: '#/definitions/Itinerario'
  *
  */
-router.get('/itinerios', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         const itinerario = await itinerarioService.buscarItinerarios();
         res.json(itinerario);
     } catch (e) {
+        console.log(e)
         res.status(e.statusCode).send(e);
     }
 });
