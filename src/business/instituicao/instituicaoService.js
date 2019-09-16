@@ -1,5 +1,5 @@
 const institutionRepository = require("../../infrastructure/instituicao/instituicaoRepository");
-const { ResultadoVazioException } = require("../../utils/Exceptions");
+const {ResultadoVazioException} = require("../../utils/Exceptions");
 
 module.exports = {
     salvarInstituicao: function (institution) {
@@ -10,8 +10,8 @@ module.exports = {
         return institutionRepository.buscarInstituicoes()
             .then(result => {
 
-                if(result.length < 1){
-                    throw new ResultadoVazioException('instituicao',result);
+                if (result.length < 1) {
+                    throw new ResultadoVazioException('instituicao', result);
                 }
                 return result;
             })
