@@ -4,21 +4,19 @@
     currentBuild.result = "SUCCESS"
 
     try {
-        stages {
-            stage('Build') {
-                steps {
-                    sh 'npm install'
-                }
+        stage('Build') {
+            steps {
+                sh 'npm install'
             }
-            stage('Test') {
-                steps {
-                    echo 'Testing..'
-                }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
             }
-            stage('Deploy') {
-                steps {
-                    echo 'Deploying....'
-                }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
             }
         }
     } catch (err) {
