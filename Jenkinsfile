@@ -1,10 +1,7 @@
-pipeline {
-    agent {
-        docker {
-            image 'node:6-alpine'
-            args '-p 3002:3000'
-        }
-    }
+#!groovy
+
+ node {
+    currentBuild.result = "SUCCESS"
 
     stages {
         stage('Build') {
