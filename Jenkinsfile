@@ -3,21 +3,27 @@
  node {
     currentBuild.result = "SUCCESS"
 
-    stages {
-        stage('Build') {
-            steps {
-                sh 'npm install'
+    try {
+        stages {
+            stage('Build') {
+                steps {
+                    sh 'npm install'
+                }
+            }
+            stage('Test') {
+                steps {
+                    echo 'Testing..'
+                }
+            }
+            stage('Deploy') {
+                steps {
+                    echo 'Deploying....'
+                }
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
+    } catch (err) {
+        currentBuild.result = "FAILURE"
+        throw err
     }
+
 }
