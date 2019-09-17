@@ -1,21 +1,20 @@
-#!groovy
-
- node {
-    currentBuild.result = "SUCCESS"
-
-    try {
+pipeline {
+    agent any
+    stages {
         stage('Build') {
-            sh 'npm install'
+            steps {
+                sh 'npm install'
+            }
         }
         stage('Test') {
-            echo 'Testing..'
+            steps {
+
+            }
         }
         stage('Deploy') {
-            echo 'Deploying....'
-        }
-    } catch (err) {
-        currentBuild.result = "FAILURE"
-        throw err
-    }
+            steps {
 
+            }
+        }
+    }
 }
