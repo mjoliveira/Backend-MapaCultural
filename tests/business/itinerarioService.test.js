@@ -1,7 +1,8 @@
 const itinerarioService = require('../../src/business/itinerario/itinerarioService');
 const itinerarioRepository = require('../../src/infrastructure/itinerario/itinerarioRepository');
+const {ResultadoVazioException} = require("../../src/utils/Exceptions");
 const { itinerario } = require('../mocks/itinerarioMock');
-// const err = new Error('ResultadoVazioException');
+const err = new Error('itinerario');
 
 describe('Teste buscar dados de itinerario', () => {
     it("Retorna todos os itinerarios do banco", async () => {
@@ -11,11 +12,16 @@ describe('Teste buscar dados de itinerario', () => {
         expect(itinerarios[0]).toEqual(itinerario);
     });
 
-    it("Retorna uma exceção ao não ter dados", async () => {
+    // it("Retorna uma exceção ao não ter dados", async () => {
+    //     jest.spyOn(itinerarioRepository, 'buscarItinerarios').mockResolvedValue([itinerario]);
+    //     expect(itinerarioService.buscarItinerarios());
+    // });
+
+    it("Testa exception Resultado Vasio", async () => {
         jest.spyOn(itinerarioRepository, 'buscarItinerarios').mockResolvedValue([]);
-        expect(itinerarioService.buscarItinerarios()).toThrow;
+
+        expect(await itinerarioService.buscarItinerarios()).toThrowError(ResultadoVazioException);
     });
 
-        // expect(sc.getTemplateName).toThrow(Error);
-        // ResultadoVazioException
+
 });
