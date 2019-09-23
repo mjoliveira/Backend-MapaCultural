@@ -9,8 +9,14 @@ const intituicaoMock = {
 describe('Retorna ID da Instituicao', () => {
     it("Retorna ID da Instituicao", async () => {
         jest.spyOn(instituicaoRepository, 'buscarInstituicoes').mockResolvedValue([intituicaoMock]);
-        const institutions = await instituicaoService.buscarInstituicoes();
-        expect(instituicaoRepository.buscarInstituicoes).toHaveBeenCalledTimes(1);
-        expect(institutions[0]).toEqual(intituicaoMock);
+
+        return expect(instituicaoService.buscarInstituicoes()).resolves.toEqual([intituicaoMock]);
+    });
+
+    it("Testa exception para lista vazia", async () => {
+        jest.spyOn(instituicaoRepository, 'buscarInstituicoes').mockResolvedValue([]);
+
+        return expect(instituicaoService.buscarInstituicoes()).rejects.toThrow('Não foi encontrado nenhum valor de instituicao');
+
     });
 });

@@ -7,15 +7,16 @@ module.exports = {
     },
 
     buscarInstituicoes: function () {
-        return institutionRepository.buscarInstituicoes()
-            .then(result => {
-                if (result.length < 1) {
-                    throw new ResultadoVazioException('instituicao', result);
+        return new Promise((resolve,reject) => {
+            institutionRepository.buscarInstituicoes().then(instituticoes => {
+                if (instituticoes.length < 1) {
+                    throw new ResultadoVazioException('instituicao', instituticoes);
                 }
-                return result;
+                resolve(instituticoes);
             })
             .catch(err => {
-                throw err;
+                reject(err);
             });
+        });
     }
 };
