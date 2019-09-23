@@ -2,16 +2,17 @@ const itinerarioRepository = require("../../infrastructure/itinerario/itinerario
 const {ResultadoVazioException} = require("../../utils/Exceptions");
 
 module.exports = {
-    buscarItinerarios: function() {
-        return itinerarioRepository.buscarItinerarios()
-            .then(result => {
-                if(result.length < 1){
-                    throw new ResultadoVazioException('itinerario',result);
-                }
-                return result;
-            })
-            .catch(err => {
-                throw err;
-            });
+    buscarItinerarios: function () {
+        return new Promise((resolve, reject) => {
+                itinerarioRepository.buscarItinerarios().then(itinerarios => {
+                    if (itinerarios.length < 1) {
+                        throw new ResultadoVazioException('itinerario', itinerarios);
+                    }
+                    resolve(itinerarios);
+                }).catch(err => {
+                    reject(err);
+                });
+            }
+        );
     }
 };

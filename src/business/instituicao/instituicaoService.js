@@ -9,7 +9,6 @@ module.exports = {
     buscarInstituicoes: function () {
         return institutionRepository.buscarInstituicoes()
             .then(result => {
-
                 if (result.length < 1) {
                     throw new ResultadoVazioException('instituicao', result);
                 }

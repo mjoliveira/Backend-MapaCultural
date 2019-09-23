@@ -29,7 +29,7 @@ const itinerarioService = require('../../business/itinerario/itinerarioService')
  *     description: Tudo sobre Itinerario
  */
 
- /**
+/**
  * @swagger
  *
  * /api/v1/itinerario:
@@ -46,12 +46,8 @@ const itinerarioService = require('../../business/itinerario/itinerarioService')
  *
  */
 router.get('/', async (req, res) => {
-    try {
-        const itinerario = await itinerarioService.buscarItinerarios();
-        res.json(itinerario);
-    } catch (e) {
-        console.log(e)
-        res.status(e.statusCode).send(e);
-    }
+    await itinerarioService.buscarItinerarios()
+        .then(itinerario => res.json(itinerario))
+        .catch(e => res.status(e.statusCode).send(e));
 });
 module.exports = router;
