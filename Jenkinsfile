@@ -14,7 +14,7 @@ node {
         }
 
         stage('Down Images DB, Api and Web'){
-           sh 'ssh root@10.32.223.4 -p 5439 "cd /opt/docker/ibere/ibere-api; docker-compose down -f docker-compose-jenkins"'
+           sh 'ssh root@10.32.223.4 -p 5439 "cd /opt/docker/ibere/ibere-api; docker-compose -f docker-compose-jenkins down"'
         }
 
         stage('Pre Build Web'){
@@ -22,15 +22,15 @@ node {
         }
 
         stage('Build and Up Docker Image Api and Web'){
-           sh 'ssh root@10.32.223.4 -p 5439 "cd /opt/docker/ibere/ibere-api; docker-compose up -f docker-compose-jenkins --build -d"'
+           sh 'ssh root@10.32.223.4 -p 5439 "cd /opt/docker/ibere/ibere-api; docker-compose -f docker-compose-jenkins up --build -d"'
         }
 
         stage('Success'){
             mail body: 'project build successful in HML',
                      from: 'jenkins@ages.com',
-                     replyTo: 'cassio.trindade@pucrs.br',
+                     replyTo: 'cassio.trindade@pucrs.br, gabriel.loff@acad.pucrs.br',
                      subject: 'Success CI Ibere',
-                     to: 'cassio.trindade@pucrs.br'
+                     to: 'cassio.trindade@pucrs.br, gabriel.loff@acad.pucrs.br'
         }
 
     }
@@ -40,9 +40,9 @@ node {
 
             mail body: "project build error is here: ${env.BUILD_URL}" ,
             from: 'jenkins@ages.com',
-            replyTo: 'cassio.trindade@pucrs.br',
+            replyTo: 'cassio.trindade@pucrs.br, gabriel.loff@acad.pucrs.br',
             subject: 'Error CI Ibere',
-            to: 'cassio.trindade@pucrs.br'
+            to: 'cassio.trindade@pucrs.br, gabriel.loff@acad.pucrs.br'
 
         throw err
     }
