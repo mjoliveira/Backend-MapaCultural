@@ -14,7 +14,7 @@ node {
         }
 
         stage('Down Images DB, Api and Web'){
-           sh 'ssh root@10.32.223.4 -p 5439 "cd /opt/docker/ibere/ibere-api; docker-compose -f docker-compose-jenkins down"'
+           sh 'ssh root@10.32.223.4 -p 5439 "cd /opt/docker/ibere/ibere-api; docker-compose -f docker-compose-jenkins.yml down"'
         }
 
         stage('Pre Build Web'){
@@ -22,7 +22,7 @@ node {
         }
 
         stage('Build and Up Docker Image Api and Web'){
-           sh 'ssh root@10.32.223.4 -p 5439 "cd /opt/docker/ibere/ibere-api; docker-compose -f docker-compose-jenkins up --build -d"'
+           sh 'ssh root@10.32.223.4 -p 5439 "cd /opt/docker/ibere/ibere-api; docker-compose -f docker-compose-jenkins.yml up --build -d"'
         }
 
         stage('Success'){
