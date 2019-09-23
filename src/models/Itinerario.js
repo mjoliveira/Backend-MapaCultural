@@ -5,7 +5,6 @@ module.exports = (sequelize, DataTypes) => {
                 primaryKey: true,
                 autoIncrement: true
             },
-
             nome: {
                 type: DataTypes.STRING,
                 AllowNull: false
@@ -31,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
         });
 
     Itinerario.associate = models => {
-        Itinerario.belongsToMany(models.Instituicao, {through: 'ItinerarioInstituicoes'});
+        Itinerario.belongsToMany(models.Instituicao, {through: 'ItinerarioInstituicoes', as: "Instituicao"});
     };
 
     return Itinerario;
