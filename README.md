@@ -5,7 +5,7 @@ Passos para executar o projeto
 
 1. Possuir Docker e Docker-Compose instalados no ambiente
 2. Certificar que a porta 3307 está liberada
-3. Executar o comando ``` $ docker-compose up db_mysql```
+3. Executar o comando ``` $ docker-compose up iberedb```
 4. O Banco de dados deve estar executando na porta 3307 pronto para configuração
 
 ### Instalando/Atualizando Dependencias
