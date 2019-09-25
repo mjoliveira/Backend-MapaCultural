@@ -29,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //Adicionando rotas na aplicação
 app.use('/api/v1/instituicao', institutionRouter);
+app.use('/api/v1/instituicao/:id', institutionRouter);
 app.use('/api/v1/itinerario', itinerarioRouter);
 
 module.exports = app;

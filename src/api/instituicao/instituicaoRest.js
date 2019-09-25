@@ -87,4 +87,14 @@ router.get('/', async (req, res) => {
 });
 
 
+router.get('/:id', async (req, res) => {
+    var id = req.params.id;
+    console.log("Rest ->       Id: ");
+    console.log(id);
+    await institutionService.buscarInstituicaoPorID(id)
+        .then(instituicao => res.json(instituicao))
+        .catch(e => res.status(e.statusCode).send(e));
+});
+
+
 module.exports = router;

@@ -7,5 +7,9 @@ module.exports = {
 
     buscarInstituicoes: function(){
         return Instituicao.findAll();
+    },
+
+    buscarInstituicaoPorID: function (id) {
+        return Intituicao.findById(id);
     }
 };
