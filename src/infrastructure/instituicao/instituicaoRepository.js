@@ -1,4 +1,5 @@
 const { Instituicao } = require('../../models');
+const { Horario } = require('../../models');
 
 module.exports = {
     salvarInstituicao: function (instutition) {
@@ -11,9 +12,15 @@ module.exports = {
         });
     },
 
-    buscarInstituicoes: function(){
+    buscarInstituicoes: function () {
         return new Promise((resolve, reject) => {
-            Instituicao.findAll().then(instituicao => {
+            Instituicao.findAll({
+                include: [
+                    {
+                        model: Horario
+                    }
+                ]
+            }).then(instituicao => {
                 resolve(instituicao);
             }).catch(err => {
                 console.log(err);
