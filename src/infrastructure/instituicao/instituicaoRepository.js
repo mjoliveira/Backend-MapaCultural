@@ -1,5 +1,4 @@
-const { Instituicao } = require('../../models');
-const { Horario } = require('../../models');
+const { Instituicao, Horario, Rede, Imagem } = require('../../models');
 
 module.exports = {
     salvarInstituicao: function (instutition) {
@@ -17,6 +16,10 @@ module.exports = {
             },
             include: [{
                 model: Horario
+            },{
+                model: Rede
+            },{
+                model: Imagem
             }]
         });
     }
