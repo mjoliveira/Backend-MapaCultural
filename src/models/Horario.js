@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
             },
 
             dia: {
-                type: DataTypes.DATE,
+                type: DataTypes.STRING,
                 AllowNull: false
             },
 
