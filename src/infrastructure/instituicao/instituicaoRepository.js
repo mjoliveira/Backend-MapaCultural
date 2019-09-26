@@ -1,4 +1,5 @@
 const { Instituicao } = require('../../models');
+const { Horario } = require('../../models');
 
 module.exports = {
     salvarInstituicao: function (instutition) {
@@ -10,6 +11,13 @@ module.exports = {
     },
 
     buscarInstituicaoPorID: function (id) {
-        return Intituicao.findById(id);
+        return Instituicao.findOne({
+            where: {
+                id: id
+            },
+            include: [{
+                model: Horario
+            }]
+        });
     }
 };

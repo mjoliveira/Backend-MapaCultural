@@ -87,13 +87,37 @@ router.get('/', async (req, res) => {
 });
 
 
+/**
+ * @swagger
+ *
+ * /api/v1/instituicao/{id}:
+ *   get:
+ *     tags: [instituicao]
+ *     description: Get Application Institutions
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *         type: integer
+ *        required: true
+ *     responses:
+ *       200:
+ *         description: Application Institutions
+ *         content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/definitions/Institution'
+ *
+ */
 router.get('/:id', async (req, res) => {
     var id = req.params.id;
     console.log("Rest ->       Id: ");
     console.log(id);
     await institutionService.buscarInstituicaoPorID(id)
         .then(instituicao => res.json(instituicao))
-        .catch(e => res.status(e.statusCode).send(e));
+        .catch(e => {
+            res.status(e.statusCode).send(e);
+        });
 });
 
 
