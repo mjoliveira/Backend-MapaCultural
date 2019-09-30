@@ -10,7 +10,7 @@ module.exports = {
 
             dia: {
                 AllowNull: false,
-                type: DataTypes.DATE
+                type: DataTypes.STRING
             },
 
             horaAbertura: {
