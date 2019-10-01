@@ -2,8 +2,16 @@ const institutionRepository = require("../../infrastructure/instituicao/institui
 const {ResultadoVazioException} = require("../../utils/Exceptions");
 
 module.exports = {
-    salvarInstituicao: function (institution) {
-        return institutionRepository.salvarInstituicao(institution);
+    salvarInstituicao: function (instituicao) {
+        return new Promise((resolve, reject) => {
+            institutionRepository.salvarInstituicao(instituicao)
+                .then(instituicao => {
+                    resolve(instituicao);
+                }).catch(err => {
+                    console.error(err);
+                    reject(err);
+            });
+        });
     },
 
     buscarInstituicoes: function () {

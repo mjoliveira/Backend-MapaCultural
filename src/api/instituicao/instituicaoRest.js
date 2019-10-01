@@ -7,6 +7,18 @@ const institutionService = require('../../business/instituicao/instituicaoServic
  * @swagger
  *
  * definitions:
+ *  Horario:
+ *   type: object
+ *   properties:
+ *    dia:
+ *     type: string
+ *    horaAbertura:
+ *     type: string
+ *     pattern: '^\d{2}:\d{2}$'
+ *    horaFechamento:
+ *     type: string
+ *     pattern: '^\d{2}:\d{2}$'
+ *
  *  Institution:
  *   type: object
  *   properties:
@@ -28,6 +40,10 @@ const institutionService = require('../../business/instituicao/instituicaoServic
  *     type: string
  *    tempoVisita:
  *     type: integer
+ *    horarios:
+ *     type: array
+ *     items:
+ *      $ref: '#/definitions/Horario'
  */
 
 /**
@@ -59,9 +75,14 @@ const institutionService = require('../../business/instituicao/instituicaoServic
  *
  */
 router.post('/', async function (req, res) {
-  const institution = await institutionService.salvarInstituicao(req.body);
-  res.status(201);
-  res.json(institution);
+    institutionService.salvarInstituicao(req.body)
+        .then(instituicao => {
+            res.status(201);
+            res.json(instituicao);
+        }).catch(err => {
+        console.error(err);
+        res.status(err.statusCode).send(err);
+    });
 });
 
 /**
@@ -81,12 +102,12 @@ router.post('/', async function (req, res) {
  *
  */
 router.get('/', async (req, res) => {
-  try {
-    const instituicao = await institutionService.buscarInstituicoes();
-    res.json(instituicao);
-  } catch (e) {
-     res.status(e.statusCode).send(e);
-   }
+    try {
+        const instituicao = await institutionService.buscarInstituicoes();
+        res.json(instituicao);
+    } catch (e) {
+        res.status(e.statusCode).send(e);
+    }
 });
 
 module.exports = router;
