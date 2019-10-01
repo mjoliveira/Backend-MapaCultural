@@ -25,6 +25,12 @@ const institutionService = require('../../business/instituicao/instituicaoServic
  *    redeSocial:
  *     type: string
  *
+ *  Imagem:
+ *   type: object
+ *   properties:
+ *    url:
+ *     type: string
+ *
  *  Institution:
  *   type: object
  *   properties:
@@ -54,6 +60,10 @@ const institutionService = require('../../business/instituicao/instituicaoServic
  *     type: array
  *     items:
  *      $ref: '#/definitions/Rede'
+ *    imagens:
+ *     type: array
+ *     items:
+ *      $ref: '#/definitions/Imagem'
  */
 
 /**
