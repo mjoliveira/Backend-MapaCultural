@@ -19,6 +19,12 @@ const institutionService = require('../../business/instituicao/instituicaoServic
  *     type: string
  *     pattern: '^\d{2}:\d{2}$'
  *
+ *  Rede:
+ *   type: object
+ *   properties:
+ *    redeSocial:
+ *     type: string
+ *
  *  Institution:
  *   type: object
  *   properties:
@@ -44,6 +50,10 @@ const institutionService = require('../../business/instituicao/instituicaoServic
  *     type: array
  *     items:
  *      $ref: '#/definitions/Horario'
+ *    redes:
+ *     type: array
+ *     items:
+ *      $ref: '#/definitions/Rede'
  */
 
 /**
