@@ -12,6 +12,7 @@ const institutionService = require('../../business/instituicao/instituicaoServic
  *   properties:
  *    dia:
  *     type: string
+ *     enum: [seg,ter,qua,qui,sex,sab,dom]
  *    horaAbertura:
  *     type: string
  *     pattern: '^\d{2}:\d{2}$'
