@@ -30,7 +30,7 @@ services:
       - "4301"
     ports:
       - "4301:3000"
-    command: ["./wait-for-it.sh", "-t", "0", "iberedb:3306", "--","bash","-c","'npx sequelize db:migrate && npm start'"]
+    command: "./wait-for-it.sh -t 0 iberedb:3306 -- bash -c 'npm run migration db:migrate && npm start'"
     networks:
       - ibere-network
 

@@ -16,7 +16,8 @@ Passos para executar o projeto
 ### Configurando o Banco para desenvolvimento
 
 1. Executar o comando ``` $  npx sequelize-cli db:migrate ```
-2. O banco de dados vai ser configurado conforme a pasta database do projeto
+2. Executar o comando ``` $  npx sequelize-cli db:seed:all ```
+3. O banco de dados vai ser configurado conforme a pasta database do projeto
 
 ### Criação de novas Tabelas e Models
 
@@ -25,3 +26,5 @@ Passos para executar o projeto
 ### Execução do ambiente de desenvolvimento em docker
 
 1. Executar o commando ``` $ docker-compose up nodejs ```
+
+# Cassio
