@@ -53,5 +53,20 @@ module.exports = {
         }, {
             where: {id: id}
         });
+    },
+
+    atualizarInstituicaoHorarios: function (id, horarios) {
+        return Horario.destroy({where: {InstituicaoID: id}})
+            .then(() => {
+                horarios.map(horario => Horario.build({
+                    dia: horario.dia,
+                    horaAbertura: horario.horaAbertura,
+                    horaFechamento: horario.horaFechamento,
+                    InstituicaoID: id
+                })).forEach(instance => instance.save());
+            }).catch(err => {
+                console.log(err);
+                throw err;
+            });
     }
 };

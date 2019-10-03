@@ -175,14 +175,43 @@ router.get('/', async (req, res) => {
  *    responses:
  *     200:
  *       description: Ok
- *       content:
- *        application/json:
- *          schema:
- *           $ref: '#/definitions/InstituicaoAtualizacao'
- *
  */
 router.put('/:id', async (req, res) => {
     instituicaoService.atualizarInstituicao(req.params.id, req.body)
+        .then(() => {
+            res.status(200).send();
+        }).catch(err => {
+        console.error(err);
+        res.status(err.statusCode).send(err);
+    });
+});
+
+/**
+ * @swagger
+ *
+ * /api/v1/instituicao/{id}/horarios:
+ *   put:
+ *    tags: [instituicao]
+ *    description: Atualiza Instituicao
+ *    parameters:
+ *     - in: path
+ *       name: id
+ *       schema:
+ *        type: integer
+ *       required: true
+ *    requestBody:
+ *      content:
+ *       application/json:
+ *        schema:
+ *         type: array
+ *         items:
+ *          $ref: '#/definitions/Horario'
+ *    responses:
+ *     200:
+ *       description: Ok
+ */
+router.put('/:id/horarios', async (req, res) => {
+    instituicaoService.atualizarInstituicaoHorarios(req.params.id, req.body)
         .then(() => {
             res.status(200).send();
         }).catch(err => {

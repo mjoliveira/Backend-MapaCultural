@@ -36,5 +36,16 @@ module.exports = {
                     reject(err);
             });
         }));
+    },
+
+    atualizarInstituicaoHorarios: function (id, horarios) {
+        return new Promise(((resolve, reject) => {
+            instituicaoRepository.atualizarInstituicaoHorarios(id, horarios)
+                .then(() => {
+                    resolve();
+                }).catch(err => {
+                reject(err);
+            });
+        }));
     }
 };

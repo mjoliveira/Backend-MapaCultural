@@ -26,5 +26,10 @@ module.exports = (sequelize, DataTypes) => {
             freezeTableName: true,
             tableName: 'Horarios'
         });
+
+    Horario.associate = models => {
+        Horario.belongsTo(models.Instituicao, {foreignKey: 'InstituicaoID'});
+    };
+
     return Horario;
 };
