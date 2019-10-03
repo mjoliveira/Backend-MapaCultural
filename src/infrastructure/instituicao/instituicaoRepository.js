@@ -38,5 +38,20 @@ module.exports = {
                 reject(err);
             });
         });
+    },
+
+    atualizarInstituicao: function (id, instituicao) {
+        return Instituicao.update({
+            nome: instituicao.nome,
+            endereco: instituicao.endereco,
+            tempoVisita: instituicao.tempoVisita,
+            descricao: instituicao.descricao,
+            latitude: instituicao.latitude,
+            longitude: instituicao.longitude,
+            telefone: instituicao.telefone,
+            observacoes: instituicao.observacoes
+        }, {
+            where: {id: id}
+        });
     }
 };

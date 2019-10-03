@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const institutionService = require('../../business/instituicao/instituicaoService');
+const instituicaoService = require('../../business/instituicao/instituicaoService');
 
 
 /**
@@ -65,6 +65,28 @@ const institutionService = require('../../business/instituicao/instituicaoServic
  *     type: array
  *     items:
  *      $ref: '#/definitions/Imagem'
+ *
+ *  InstituicaoAtualizacao:
+ *   type: object
+ *   properties:
+ *    descricao:
+ *     type: string
+ *    endereco:
+ *     type: string
+ *    latitude:
+ *     type: number
+ *     format: float
+ *    longitude:
+ *     type: number
+ *     format: float
+ *    nome:
+ *     type: string
+ *    observacoes:
+ *     type: string
+ *    telefone:
+ *     type: string
+ *    tempoVisita:
+ *     type: integer
  */
 
 /**
@@ -96,7 +118,7 @@ const institutionService = require('../../business/instituicao/instituicaoServic
  *
  */
 router.post('/', async function (req, res) {
-    institutionService.salvarInstituicao(req.body)
+    instituicaoService.salvarInstituicao(req.body)
         .then(instituicao => {
             res.status(201);
             res.json(instituicao);
@@ -124,11 +146,49 @@ router.post('/', async function (req, res) {
  */
 router.get('/', async (req, res) => {
     try {
-        const instituicao = await institutionService.buscarInstituicoes();
+        const instituicao = await instituicaoService.buscarInstituicoes();
         res.json(instituicao);
     } catch (e) {
         res.status(e.statusCode).send(e);
     }
+});
+
+
+/**
+ * @swagger
+ *
+ * /api/v1/instituicao/{id}:
+ *   put:
+ *    tags: [instituicao]
+ *    description: Atualiza Instituicao
+ *    parameters:
+ *     - in: path
+ *       name: id
+ *       schema:
+ *        type: integer
+ *       required: true
+ *    requestBody:
+ *      content:
+ *       application/json:
+ *        schema:
+ *          $ref: '#/definitions/InstituicaoAtualizacao'
+ *    responses:
+ *     200:
+ *       description: Ok
+ *       content:
+ *        application/json:
+ *          schema:
+ *           $ref: '#/definitions/InstituicaoAtualizacao'
+ *
+ */
+router.put('/:id', async (req, res) => {
+    instituicaoService.atualizarInstituicao(req.params.id, req.body)
+        .then(() => {
+            res.status(200).send();
+        }).catch(err => {
+        console.error(err);
+        res.status(err.statusCode).send(err);
+    });
 });
 
 module.exports = router;

@@ -1,10 +1,10 @@
-const institutionRepository = require("../../infrastructure/instituicao/instituicaoRepository");
+const instituicaoRepository = require("../../infrastructure/instituicao/instituicaoRepository");
 const {ResultadoVazioException} = require("../../utils/Exceptions");
 
 module.exports = {
     salvarInstituicao: function (instituicao) {
         return new Promise((resolve, reject) => {
-            institutionRepository.salvarInstituicao(instituicao)
+            instituicaoRepository.salvarInstituicao(instituicao)
                 .then(instituicao => {
                     resolve(instituicao);
                 }).catch(err => {
@@ -15,7 +15,7 @@ module.exports = {
     },
 
     buscarInstituicoes: function () {
-        return institutionRepository.buscarInstituicoes()
+        return instituicaoRepository.buscarInstituicoes()
             .then(result => {
                 if (result.length < 1) {
                     throw new ResultadoVazioException('instituicao', result);
@@ -25,5 +25,16 @@ module.exports = {
             .catch(err => {
                 throw err;
             });
+    },
+
+    atualizarInstituicao: function (id, instituicao) {
+        return new Promise(((resolve, reject) => {
+            instituicaoRepository.atualizarInstituicao(id, instituicao)
+                .then(() => {
+                    resolve();
+                }).catch(err => {
+                    reject(err);
+            });
+        }));
     }
 };
