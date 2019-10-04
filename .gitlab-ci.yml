@@ -15,7 +15,7 @@ install_dependencies:
      - dev
    script:
      - npm install
-   artifacts:
+   cache:
      paths:
        - node_modules/
 
@@ -25,6 +25,9 @@ testing_lint:
     - master
     - dev
   script: npm run lint
+  cache:
+    paths:
+      - node_modules/
 
 testing_testing:
   stage: test
@@ -33,3 +36,6 @@ testing_testing:
     - dev
   script: npm test
   coverage: /All files\s*\|\s*([\d\.]+)/
+  cache:
+    paths:
+      - node_modules/
