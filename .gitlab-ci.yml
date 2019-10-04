@@ -35,7 +35,7 @@ testing_testing:
     - master
     - dev
   script: npm test
-  coverage: /All files\s*\|\s*([\d\.]+)/
+  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
   cache:
     paths:
       - node_modules/
