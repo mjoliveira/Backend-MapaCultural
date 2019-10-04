@@ -1,16 +1,77 @@
 const instituicaoService = require('../../src/business/instituicao/instituicaoService');
 const instituicaoRepository = require('../../src/infrastructure/instituicao/instituicaoRepository');
+const {
+    instituicaoCompleta,
+    instituicaoIncompleta,
+    instituicaoNome,
+    instituicaoHorarios,
+    instituicaoRedes,
+    instituicaoImagens
+} = require('../mocks/instituicaoMock');
 
-const intituicaoMock = {
-    id: 1,
-    nome: "Ibere"
-}
 
-describe('Retorna ID da Instituicao', () => {
-    it("Retorna ID da Instituicao", async () => {
-        jest.spyOn(instituicaoRepository, 'buscarInstituicoes').mockResolvedValue([intituicaoMock]);
-        const institutions = await instituicaoService.buscarInstituicoes();
-        expect(instituicaoRepository.buscarInstituicoes).toHaveBeenCalledTimes(1);
-        expect(institutions[0]).toEqual(intituicaoMock);
+describe('Testes Buscar Instituicao', () => {
+    it("Retorna Lista de Instituicao", async () => {
+        jest.spyOn(instituicaoRepository, 'buscarInstituicoes').mockResolvedValue([instituicaoCompleta]);
+
+        return expect(instituicaoService.buscarInstituicoes()).resolves.toEqual([instituicaoCompleta]);
+    });
+});
+
+describe('Testes Salvar Instituicao', () => {
+    it("Salva Instituicao com todos parametros", async () => {
+        jest.spyOn(instituicaoRepository, 'salvarInstituicao').mockImplementation().mockResolvedValue();
+        return instituicaoService.salvarInstituicao(instituicaoCompleta).then(() => {
+            expect(instituicaoRepository.salvarInstituicao).toHaveBeenCalledWith(instituicaoCompleta);
+        });
+    });
+
+    it("Salva Instituicao com parametros faltando", async () => {
+        jest.spyOn(instituicaoRepository, 'salvarInstituicao').mockImplementation().mockResolvedValue();
+        return instituicaoService.salvarInstituicao(instituicaoIncompleta).then(() => {
+            expect(instituicaoRepository.salvarInstituicao).toHaveBeenCalledWith(instituicaoIncompleta);
+        });
+    });
+});
+
+describe('Testes Atualizar Instituicao', () => {
+    it("Atualiza informacoes basicas", async () => {
+        jest.spyOn(instituicaoRepository, 'atualizarInstituicao').mockImplementation().mockResolvedValue();
+
+        return instituicaoService.atualizarInstituicao(1, instituicaoIncompleta).then(() => {
+            expect(instituicaoRepository.atualizarInstituicao).toHaveBeenCalledWith(1, instituicaoIncompleta);
+        });
+    });
+
+    it("Atualiza somente uma informacao", async () => {
+        jest.spyOn(instituicaoRepository, 'atualizarInstituicao').mockImplementation().mockResolvedValue();
+
+        return instituicaoService.atualizarInstituicao(1, instituicaoNome).then(() => {
+            expect(instituicaoRepository.atualizarInstituicao).toHaveBeenCalledWith(1, instituicaoNome);
+        });
+    });
+
+    it("Atualiza Horarios", async () => {
+        jest.spyOn(instituicaoRepository, 'atualizarInstituicaoHorarios').mockImplementation().mockResolvedValue();
+
+        return instituicaoService.atualizarInstituicaoHorarios(1, instituicaoHorarios).then(() => {
+            expect(instituicaoRepository.atualizarInstituicaoHorarios).toHaveBeenCalledWith(1, instituicaoHorarios);
+        });
+    });
+
+    it("Atualiza Redes", async () => {
+        jest.spyOn(instituicaoRepository, 'atualizarInstituicaoRedes').mockImplementation().mockResolvedValue();
+
+        return instituicaoService.atualizarInstituicaoRedes(1, instituicaoRedes).then(() => {
+            expect(instituicaoRepository.atualizarInstituicaoRedes).toHaveBeenCalledWith(1, instituicaoRedes);
+        });
+    });
+
+    it("Atualiza Imagens", async () => {
+        jest.spyOn(instituicaoRepository, 'atualizarInstituicaoImagens').mockImplementation().mockResolvedValue();
+
+        return instituicaoService.atualizarInstituicaoImagens(1, instituicaoImagens).then(() => {
+            expect(instituicaoRepository.atualizarInstituicaoImagens).toHaveBeenCalledWith(1, instituicaoImagens);
+        });
     });
 });

@@ -2,7 +2,6 @@ const {Instituicao, Horario, Rede, Imagem} = require('../../models');
 
 module.exports = {
     salvarInstituicao: function (instituicao) {
-        console.log(JSON.stringify(instituicao));
         return Instituicao.create({
             nome: instituicao.nome,
             endereco: instituicao.endereco,

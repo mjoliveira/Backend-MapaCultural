@@ -6,4 +6,4 @@ const itinerario = {
     tempoBicicleta: 10
 };
 
-module.exports = { itinerario }
+module.exports = { itinerario };

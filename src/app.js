@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-var fs = require('fs');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const cors = require('cors');
@@ -19,7 +18,6 @@ const swaggerSpec = swaggerJSDoc(options);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 //Configurando Morgan
-var accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
 logger.token('req-body', function getReqBody (req) {
     return JSON.stringify(req.body);
 });
@@ -28,8 +26,6 @@ app.use(cors());
 
 //Configurações da Aplicação Express
 app.use(logger(':remote-addr :remote-user [:date[clf]] :method :url HTTP/:http-version :status :req-body :res[content-length] - :response-time ms'));
-//Salvar log em arquivo
-//app.use(logger(':remote-addr :remote-user [:date[clf]] :method :url HTTP/:http-version :status :req-body :res[content-length] - :response-time ms', {stream: accessLogStream}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
