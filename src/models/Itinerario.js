@@ -30,7 +30,7 @@ module.exports = (sequelize, DataTypes) => {
         });
 
     Itinerario.associate = models => {
-        Itinerario.belongsToMany(models.Instituicao, {through: models.ItinerarioInstituicoes});
+        Itinerario.belongsToMany(models.Instituicao, {through: 'ItinerarioInstituicao'});
     };
 
     return Itinerario;

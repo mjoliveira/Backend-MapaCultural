@@ -8,8 +8,8 @@ module.exports = {
                 .then(instituicao => {
                     resolve(instituicao);
                 }).catch(err => {
-                    console.error(err);
-                    reject(err);
+                console.error(err);
+                reject(err);
             });
         });
     },
@@ -33,7 +33,7 @@ module.exports = {
                 .then(() => {
                     resolve();
                 }).catch(err => {
-                    reject(err);
+                reject(err);
             });
         }));
     },
@@ -41,6 +41,28 @@ module.exports = {
     atualizarInstituicaoHorarios: function (id, horarios) {
         return new Promise(((resolve, reject) => {
             instituicaoRepository.atualizarInstituicaoHorarios(id, horarios)
+                .then(() => {
+                    resolve();
+                }).catch(err => {
+                reject(err);
+            });
+        }));
+    },
+
+    atualizarInstituicaoRedes: function (id, redes) {
+        return new Promise(((resolve, reject) => {
+            instituicaoRepository.atualizarInstituicaoRedes(id, redes)
+                .then(() => {
+                    resolve();
+                }).catch(err => {
+                reject(err);
+            });
+        }));
+    },
+
+    atualizarInstituicaoImagens: function (id, imagens) {
+        return new Promise(((resolve, reject) => {
+            instituicaoRepository.atualizarInstituicaoImagens(id, imagens)
                 .then(() => {
                     resolve();
                 }).catch(err => {

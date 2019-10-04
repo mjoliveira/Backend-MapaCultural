@@ -220,4 +220,73 @@ router.put('/:id/horarios', async (req, res) => {
     });
 });
 
+/**
+ * @swagger
+ *
+ * /api/v1/instituicao/{id}/redes:
+ *   put:
+ *    tags: [instituicao]
+ *    description: Atualiza Instituicao
+ *    parameters:
+ *     - in: path
+ *       name: id
+ *       schema:
+ *        type: integer
+ *       required: true
+ *    requestBody:
+ *      content:
+ *       application/json:
+ *        schema:
+ *         type: array
+ *         items:
+ *          $ref: '#/definitions/Rede'
+ *    responses:
+ *     200:
+ *       description: Ok
+ */
+router.put('/:id/redes', async (req, res) => {
+    instituicaoService.atualizarInstituicaoRedes(req.params.id, req.body)
+        .then(() => {
+            res.status(200).send();
+        }).catch(err => {
+        console.error(err);
+        res.status(err.statusCode).send(err);
+    });
+});
+
+/**
+ * @swagger
+ *
+ * /api/v1/instituicao/{id}/imagens:
+ *   put:
+ *    tags: [instituicao]
+ *    description: Atualiza Instituicao
+ *    parameters:
+ *     - in: path
+ *       name: id
+ *       schema:
+ *        type: integer
+ *       required: true
+ *    requestBody:
+ *      content:
+ *       application/json:
+ *        schema:
+ *         type: array
+ *         items:
+ *          $ref: '#/definitions/Imagem'
+ *    responses:
+ *     200:
+ *       description: Ok
+ */
+router.put('/:id/imagens', async (req, res) => {
+    instituicaoService.atualizarInstituicaoImagens(req.params.id, req.body)
+        .then(() => {
+            res.status(200).send();
+        }).catch(err => {
+        console.error(err);
+        res.status(err.statusCode).send(err);
+    });
+});
+
+
 module.exports = router;

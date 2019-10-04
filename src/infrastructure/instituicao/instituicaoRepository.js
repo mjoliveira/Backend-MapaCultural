@@ -68,5 +68,31 @@ module.exports = {
                 console.log(err);
                 throw err;
             });
+    },
+
+    atualizarInstituicaoRedes: function (id, redes) {
+        return Rede.destroy({where: {InstituicaoID: id}})
+            .then(() => {
+                redes.map(rede => Rede.build({
+                    redeSocial: rede.redeSocial,
+                    InstituicaoID: id
+                })).forEach(instance => instance.save());
+            }).catch(err => {
+                console.log(err);
+                throw err;
+            });
+    },
+
+    atualizarInstituicaoImagens: function (id, imagens) {
+        return Imagem.destroy({where: {InstituicaoID: id}})
+            .then(() => {
+                imagens.map(imagem => Imagem.build({
+                    url: imagem.url,
+                    InstituicaoID: id
+                })).forEach(instance => instance.save());
+            }).catch(err => {
+                console.log(err);
+                throw err;
+            });
     }
 };
