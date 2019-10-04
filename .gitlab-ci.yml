@@ -12,7 +12,6 @@ install_dependencies:
    stage: build
    except:
      - master
-     - dev
    script:
      - npm install
    cache:
@@ -23,7 +22,6 @@ testing_lint:
   stage: test
   except:
     - master
-    - dev
   script: npm run lint
   cache:
     paths:
@@ -33,7 +31,6 @@ testing_testing:
   stage: test
   except:
     - master
-    - dev
   script: npm run test-no-color
   coverage: /All files\s*\|\s*([\d\.]+)/
   cache:
