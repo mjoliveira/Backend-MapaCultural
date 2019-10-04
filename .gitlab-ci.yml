@@ -34,8 +34,8 @@ testing_testing:
   except:
     - master
     - dev
-  script: npm test
-  coverage: /All files[^|]*\|[^|]*\s+([\d\.]+)/
+  script: npm run test-no-color
+  coverage: /All files\s*\|\s*([\d\.]+)/
   cache:
     paths:
       - node_modules/

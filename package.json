@@ -6,6 +6,7 @@
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
     "test": "jest --coverage",
+    "test-no-color": "jest --no-color --coverage",
     "lint": "eslint src/**",
     "lint-fix": "eslint src/** --fix",
     "migration": "sequelize db:migrate"
