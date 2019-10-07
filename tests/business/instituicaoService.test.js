@@ -6,7 +6,9 @@ const {
     instituicaoNome,
     instituicaoHorarios,
     instituicaoRedes,
-    instituicaoImagens
+    instituicaoImagens,
+    instituicaoCompletaErroDiaSemana,
+    instituicaoCompletaErroTelefone
 } = require('../mocks/instituicaoMock');
 
 
@@ -31,6 +33,16 @@ describe('Testes Salvar Instituicao', () => {
         return instituicaoService.salvarInstituicao(instituicaoIncompleta).then(() => {
             expect(instituicaoRepository.salvarInstituicao).toHaveBeenCalledWith(instituicaoIncompleta);
         });
+    });
+
+    it("Erro ao salvar Instituicao com dia invalido", async () => {
+        jest.spyOn(instituicaoRepository, 'salvarInstituicao').mockImplementation().mockResolvedValue();
+        return expect(instituicaoService.salvarInstituicao(instituicaoCompletaErroDiaSemana)).rejects.toThrow('Erro ao validar horario');
+    });
+
+    it("Erro ao salvar Instituicao com telefone invalido", async () => {
+        jest.spyOn(instituicaoRepository, 'salvarInstituicao').mockImplementation().mockResolvedValue();
+        return expect(instituicaoService.salvarInstituicao(instituicaoCompletaErroTelefone)).rejects.toThrow('Erro ao validar telefone');
     });
 });
 

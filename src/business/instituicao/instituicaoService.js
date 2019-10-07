@@ -1,15 +1,21 @@
 const instituicaoRepository = require("../../infrastructure/instituicao/instituicaoRepository");
-const {ResultadoVazioException} = require("../../utils/Exceptions");
+const {ResultadoVazioException, BussinessException} = require("../../utils/Exceptions");
+const instituicaoValidator = require("./instituicaoValidator");
 
 module.exports = {
     salvarInstituicao: function (instituicao) {
         return new Promise((resolve, reject) => {
+            try {
+                instituicaoValidator.validarInstituicao(instituicao);
+            } catch (err) {
+                reject(err);
+            }
             instituicaoRepository.salvarInstituicao(instituicao)
                 .then(instituicao => {
                     resolve(instituicao);
                 }).catch(err => {
                 console.error(err);
-                reject(err);
+                reject(new BussinessException('instituicao', instituicao));
             });
         });
     },
@@ -33,18 +39,26 @@ module.exports = {
                 .then(() => {
                     resolve();
                 }).catch(err => {
-                reject(err);
+                console.error(err);
+                reject(new BussinessException('instituicao', instituicao));
             });
         }));
     },
 
     atualizarInstituicaoHorarios: function (id, horarios) {
         return new Promise(((resolve, reject) => {
+            try {
+                horarios
+                    .forEach(horario => instituicaoValidator.validarDia(horario));
+            } catch (err) {
+                reject(err);
+            }
             instituicaoRepository.atualizarInstituicaoHorarios(id, horarios)
                 .then(() => {
                     resolve();
                 }).catch(err => {
-                reject(err);
+                console.error(err);
+                reject(new BussinessException('instituicao', horarios));
             });
         }));
     },
@@ -55,7 +69,8 @@ module.exports = {
                 .then(() => {
                     resolve();
                 }).catch(err => {
-                reject(err);
+                console.error(err);
+                reject(new BussinessException('instituicao', redes));
             });
         }));
     },
@@ -66,7 +81,8 @@ module.exports = {
                 .then(() => {
                     resolve();
                 }).catch(err => {
-                reject(err);
+                console.error(err);
+                reject(new BussinessException('instituicao', imagens));
             });
         }));
     }

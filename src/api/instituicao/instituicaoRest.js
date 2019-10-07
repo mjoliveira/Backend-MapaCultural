@@ -51,6 +51,7 @@ const instituicaoService = require('../../business/instituicao/instituicaoServic
  *     type: string
  *    telefone:
  *     type: string
+ *     pattern: '^[(]\d{2}[)]\d{8,9}$'
  *    tempoVisita:
  *     type: integer
  *    horarios:
@@ -85,6 +86,7 @@ const instituicaoService = require('../../business/instituicao/instituicaoServic
  *     type: string
  *    telefone:
  *     type: string
+ *     pattern: '^[(]\d{2}[)]\d{8,9}$'
  *    tempoVisita:
  *     type: integer
  */
