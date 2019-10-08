@@ -7,15 +7,31 @@ module.exports = {
     },
 
     buscarInstituicoes: function () {
-        return institutionRepository.buscarInstituicoes()
-            .then(result => {
-                if (result.length < 1) {
-                    throw new ResultadoVazioException('instituicao', result);
+        return new Promise((resolve, reject) => {
+            institutionRepository.buscarInstituicoes().then(instituticoes => {
+                if (instituticoes.length < 1) {
+                    throw new ResultadoVazioException('instituicao', instituticoes);
                 }
-                return result;
+                resolve(instituticoes);
             })
             .catch(err => {
-                throw err;
+                reject(err);
             });
+        });
+    },
+
+    buscarInstituicaoPorID: function (id) {
+        return new Promise((resolve, reject) => {
+            institutionRepository.buscarInstituicaoPorID(id).then(instituicao => { //To com dúvida se isso fica ou não, pois retorna apenas um elemento. (Fica sim, e não precisa salvar em variavel)
+                console.log(instituicao);
+                if (instituicao == null) {
+                    throw new ResultadoVazioException('instituicao', instituicao);
+                }
+                resolve(instituicao);
+            })
+                .catch(err => {
+                    reject(err);
+                });
+        });
     }
 };

@@ -1,24 +1,26 @@
-const { Instituicao } = require('../../models');
+const { Instituicao, Horario, Rede, Imagem } = require('../../models');
 
 module.exports = {
     salvarInstituicao: function (instutition) {
-        return new Promise((resolve, reject) => {
-            Instituicao.create(instutition).then(instutition => {
-                resolve(instutition);
-            }).catch(err => {
-                reject(err);
-            });
-        });
+        return Instituicao.create(instutition);
     },
 
     buscarInstituicoes: function(){
-        return new Promise((resolve, reject) => {
-            Instituicao.findAll().then(instituicao => {
-                resolve(instituicao);
-            }).catch(err => {
-                console.log(err);
-                reject(err);
-            });
+        return Instituicao.findAll();
+    },
+
+    buscarInstituicaoPorID: function (id) {
+        return Instituicao.findOne({
+            where: {
+                id: id
+            },
+            include: [{
+                model: Horario
+            },{
+                model: Rede
+            },{
+                model: Imagem
+            }]
         });
     }
 };

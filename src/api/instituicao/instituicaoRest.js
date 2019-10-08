@@ -81,12 +81,42 @@ router.post('/', async function (req, res) {
  *
  */
 router.get('/', async (req, res) => {
-  try {
-    const instituicao = await institutionService.buscarInstituicoes();
-    res.json(instituicao);
-  } catch (e) {
-     res.status(e.statusCode).send(e);
-   }
+    await institutionService.buscarInstituicoes()
+        .then(instituicao => res.json(instituicao))
+        .catch(e => res.status(e.statusCode).send(e));
 });
+
+
+/**
+ * @swagger
+ *
+ * /api/v1/instituicao/{id}:
+ *   get:
+ *     tags: [instituicao]
+ *     description: Get Application Institutions
+ *     parameters:
+ *      - in: path
+ *        name: id
+ *        schema:
+ *         type: integer
+ *        required: true
+ *     responses:
+ *       200:
+ *         description: Application Institutions
+ *         content:
+ *          application/json:
+ *            schema:
+ *              $ref: '#/definitions/Institution'
+ *
+ */
+router.get('/:id', async (req, res) => {
+    var id = req.params.id;
+    await institutionService.buscarInstituicaoPorID(id)
+        .then(instituicao => res.json(instituicao))
+        .catch(e => {
+            res.status(e.statusCode).send(e);
+        });
+});
+
 
 module.exports = router;
