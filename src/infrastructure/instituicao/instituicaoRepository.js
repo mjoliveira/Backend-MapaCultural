@@ -38,11 +38,14 @@ module.exports = {
                 id: id
             },
             include: [{
-                model: Horario
+                model: Horario,
+                as: "horarios"
             }, {
-                model: Rede
+                model: Rede,
+                as: "redes"
             }, {
-                model: Imagem
+                model: Imagem,
+                as: "imagens"
             }]
         });
     },
@@ -69,7 +72,7 @@ module.exports = {
                     dia: horario.dia,
                     horaAbertura: horario.horaAbertura,
                     horaFechamento: horario.horaFechamento,
-                    InstituicaoID: id
+                    InstituicaoId: id
                 })).forEach(instance => instance.save());
             }).catch(err => {
                 console.log(err);
@@ -82,7 +85,7 @@ module.exports = {
             .then(() => {
                 redes.map(rede => Rede.build({
                     redeSocial: rede.redeSocial,
-                    InstituicaoID: id
+                    InstituicaoId: id
                 })).forEach(instance => instance.save());
             }).catch(err => {
                 console.log(err);
@@ -95,10 +98,9 @@ module.exports = {
             .then(() => {
                 imagens.map(imagem => Imagem.build({
                     url: imagem.url,
-                    InstituicaoID: id
+                    InstituicaoId: id
                 })).forEach(instance => instance.save());
             }).catch(err => {
-                console.log(err);
                 throw err;
             });
     }

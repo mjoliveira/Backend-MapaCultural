@@ -14,8 +14,7 @@ module.exports = {
                 .then(instituicao => {
                     resolve(instituicao);
                 }).catch(err => {
-                console.error(err);
-                reject(new BussinessException('instituicao', instituicao));
+                reject(new BussinessException('instituicao', err));
             });
         });
     },
@@ -27,10 +26,13 @@ module.exports = {
                     throw new ResultadoVazioException('instituicao', instituicao);
                 }
                 resolve(instituicao);
-            })
-                .catch(err => {
+            }).catch(err => {
+                if (err.name === 'ResultadoVazioException') {
                     reject(err);
-                });
+                } else {
+                    reject(new BussinessException('instituicao', err));
+                }
+            });
         });
     },
 
@@ -41,10 +43,13 @@ module.exports = {
                     throw new ResultadoVazioException('instituicao', instituticoes);
                 }
                 resolve(instituticoes);
-            })
-                .catch(err => {
+            }).catch(err => {
+                if (err.name === 'ResultadoVazioException') {
                     reject(err);
-                });
+                } else {
+                    reject(new BussinessException('instituicao', err));
+                }
+            });
         });
     },
 
@@ -54,8 +59,7 @@ module.exports = {
                 .then(() => {
                     resolve();
                 }).catch(err => {
-                console.error(err);
-                reject(new BussinessException('instituicao', instituicao));
+                reject(new BussinessException('instituicao', err));
             });
         }));
     },
@@ -63,8 +67,7 @@ module.exports = {
     atualizarInstituicaoHorarios: function (id, horarios) {
         return new Promise(((resolve, reject) => {
             try {
-                horarios
-                    .forEach(horario => instituicaoValidator.validarDia(horario));
+                horarios.forEach(horario => instituicaoValidator.validarDia(horario));
             } catch (err) {
                 reject(err);
             }
@@ -72,8 +75,7 @@ module.exports = {
                 .then(() => {
                     resolve();
                 }).catch(err => {
-                console.error(err);
-                reject(new BussinessException('instituicao', horarios));
+                reject(new BussinessException('instituicao', err));
             });
         }));
     },
@@ -84,8 +86,7 @@ module.exports = {
                 .then(() => {
                     resolve();
                 }).catch(err => {
-                console.error(err);
-                reject(new BussinessException('instituicao', redes));
+                reject(new BussinessException('instituicao', err));
             });
         }));
     },
@@ -96,8 +97,7 @@ module.exports = {
                 .then(() => {
                     resolve();
                 }).catch(err => {
-                console.error(err);
-                reject(new BussinessException('instituicao', imagens));
+                reject(new BussinessException('instituicao', err));
             });
         }));
     },
