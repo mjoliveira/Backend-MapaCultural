@@ -32,7 +32,7 @@ const instituicaoService = require('../../business/instituicao/instituicaoServic
  *    url:
  *     type: string
  *
- *  Institution:
+ *  Instituicao:
  *   type: object
  *   properties:
  *    descricao:
@@ -109,14 +109,14 @@ const instituicaoService = require('../../business/instituicao/instituicaoServic
  *      content:
  *       application/json:
  *        schema:
- *          $ref: '#/definitions/Institution'
+ *          $ref: '#/definitions/Instituicao'
  *    responses:
  *     201:
  *       description: Created
  *       content:
  *        application/json:
  *          schema:
- *           $ref: '#/definitions/Institution'
+ *           $ref: '#/definitions/Instituicao'
  *
  */
 router.post('/', async function (req, res) {
@@ -136,14 +136,14 @@ router.post('/', async function (req, res) {
  * /api/v1/instituicao:
  *   get:
  *     tags: [instituicao]
- *     description: Get Application Institutions
+ *     description: Get Application Instituicao
  *     responses:
  *       200:
- *         description: Application Institutions
+ *         description: Application Instituicao
  *         content:
  *          application/json:
  *            schema:
- *              $ref: '#/definitions/Institution'
+ *              $ref: '#/definitions/Instituicao'
  *
  */
 router.get('/', async (req, res) => {
@@ -302,11 +302,11 @@ router.put('/:id/imagens', async (req, res) => {
  *        required: true
  *     responses:
  *       200:
- *         description: Application Institutions
+ *         description: Application Instituicao
  *         content:
  *          application/json:
  *            schema:
- *              $ref: '#/definitions/Institution'
+ *              $ref: '#/definitions/Instituicao'
  *
  */
 router.get('/:id', async (req, res) => {
