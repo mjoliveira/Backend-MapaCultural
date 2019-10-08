@@ -20,17 +20,32 @@ module.exports = {
         });
     },
 
-    buscarInstituicoes: function () {
-        return instituicaoRepository.buscarInstituicoes()
-            .then(result => {
-                if (result.length < 1) {
-                    throw new ResultadoVazioException('instituicao', result);
+    buscarInstituicaoPorID: function (id) {
+        return new Promise((resolve, reject) => {
+            instituicaoRepository.buscarInstituicaoPorID(id).then(instituicao => { //To com dúvida se isso fica ou não, pois retorna apenas um elemento. (Fica sim, e não precisa salvar em variavel)
+                if (instituicao == null) {
+                    throw new ResultadoVazioException('instituicao', instituicao);
                 }
-                return result;
+                resolve(instituicao);
             })
-            .catch(err => {
-                throw err;
-            });
+                .catch(err => {
+                    reject(err);
+                });
+        });
+    },
+
+    buscarInstituicoes: function () {
+        return new Promise((resolve, reject) => {
+            instituicaoRepository.buscarInstituicoes().then(instituticoes => {
+                if (instituticoes.length < 1) {
+                    throw new ResultadoVazioException('instituicao', instituticoes);
+                }
+                resolve(instituticoes);
+            })
+                .catch(err => {
+                    reject(err);
+                });
+        });
     },
 
     atualizarInstituicao: function (id, instituicao) {
@@ -85,5 +100,5 @@ module.exports = {
                 reject(new BussinessException('instituicao', imagens));
             });
         }));
-    }
+    },
 };

@@ -29,13 +29,21 @@ module.exports = {
     },
 
     buscarInstituicoes: function () {
-        return new Promise((resolve, reject) => {
-            Instituicao.findAll().then(instituicao => {
-                resolve(instituicao);
-            }).catch(err => {
-                console.log(err);
-                reject(err);
-            });
+        return Instituicao.findAll();
+    },
+
+    buscarInstituicaoPorID: function (id) {
+        return Instituicao.findOne({
+            where: {
+                id: id
+            },
+            include: [{
+                model: Horario
+            }, {
+                model: Rede
+            }, {
+                model: Imagem
+            }]
         });
     },
 

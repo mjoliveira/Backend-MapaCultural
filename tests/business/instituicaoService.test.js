@@ -18,6 +18,27 @@ describe('Testes Buscar Instituicao', () => {
 
         return expect(instituicaoService.buscarInstituicoes()).resolves.toEqual([instituicaoCompleta]);
     });
+
+    it('Testa exception para lista vazia', async () => {
+        jest.spyOn(instituicaoRepository, 'buscarInstituicoes').mockResolvedValue([]);
+
+        return expect(instituicaoService.buscarInstituicoes()).rejects.toThrow('Não foi encontrado nenhum valor de instituicao');
+
+    });
+});
+
+describe('Testes Buscar Instituicao', () => {
+    it('Busca instituição por ID', async () => {
+        jest.spyOn(instituicaoRepository, 'buscarInstituicaoPorID').mockResolvedValue(instituicaoCompleta);
+
+        return expect(instituicaoService.buscarInstituicaoPorID(2)).resolves.toEqual(instituicaoCompleta);
+    });
+
+    it('Testa execption para ID não encontrado', async () => {
+        jest.spyOn(instituicaoRepository, 'buscarInstituicaoPorID').mockResolvedValue();
+
+        return expect(instituicaoService.buscarInstituicaoPorID(2)).rejects.toThrow('Não foi encontrado nenhum valor de instituicao');
+    });
 });
 
 describe('Testes Salvar Instituicao', () => {
