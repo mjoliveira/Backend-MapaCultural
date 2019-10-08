@@ -25,6 +25,6 @@ Passos para executar o projeto
 
 ### Execução do ambiente de desenvolvimento em docker
 
-1. Executar o commando ``` $ docker-compose up nodejs ```
+1. Executar o commando ``` $ docker-compose up api ```
 
 # Cassio
