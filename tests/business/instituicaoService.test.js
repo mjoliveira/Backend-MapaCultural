@@ -2,11 +2,11 @@ const instituicaoService = require('../../src/business/instituicao/instituicaoSe
 const instituicaoRepository = require('../../src/infrastructure/instituicao/instituicaoRepository');
 const {instituicao} = require('../mocks/instituicaoMock');
 
-describe('Retorna ID da Instituicao', () => {
-    it("Retorna ID da Instituicao", async () => {
-        jest.spyOn(instituicaoRepository, 'buscarInstituicoes').mockResolvedValue([instituicao]);
+describe('Retorna lista de Instituições', () => {
+    it("Retorna lista de Instituições", async () => {
+        jest.spyOn(instituicaoRepository, 'buscarInstituicoes').mockResolvedValue(instituicao);
 
-        return expect(instituicaoService.buscarInstituicoes()).resolves.toEqual([instituicao]);
+        return expect(instituicaoService.buscarInstituicoes()).resolves.toEqual(instituicao);
     });
 
     it('Testa exception para lista vazia', async () => {
