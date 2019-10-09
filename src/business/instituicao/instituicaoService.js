@@ -21,7 +21,7 @@ module.exports = {
 
     buscarInstituicaoPorID: function (id) {
         return new Promise((resolve, reject) => {
-            instituicaoRepository.buscarInstituicaoPorID(id).then(instituicao => { //To com dúvida se isso fica ou não, pois retorna apenas um elemento. (Fica sim, e não precisa salvar em variavel)
+            instituicaoRepository.buscarInstituicaoPorID(id).then(instituicao => {
                 if (instituicao == null) {
                     throw new ResultadoVazioException('instituicao', instituicao);
                 }
