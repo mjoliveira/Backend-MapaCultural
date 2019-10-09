@@ -1,27 +1,163 @@
-const instituicao =
-    [{
-        id: 1,
-        nome: "MASP",
-        endereco: "Av. Paulista",
-        tempoVisita: 2,
-        descricao: "Maior Vão aberto da america latina",
-        latitude: 40.7143528,
-        longitude: -74.0059731,
-        email: "masp@masp.com",
-        telefone: "939393934",
-        observacoes: "isto"
+const instituicaoCompleta = {
+    descricao: "Um museu teste",
+    endereco: "Rua Teste 123",
+    latitude: 98.0,
+    longitude: -97.0,
+    nome: "O Museu",
+    observacoes: "Um museu",
+    telefone: "(51)99999999",
+    tempoVisita: 60,
+    horarios: [
+        {
+            dia: "seg",
+            horaAbertura: "13:00",
+            horaFechamento: "22:00"
+        },
+        {
+            dia: "ter",
+            horaAbertura: "13:00",
+            horaFechamento: "22:00"
+        },
+        {
+            dia: "qua",
+            horaAbertura: "13:00",
+            horaFechamento: "22:00"
+        }
+    ],
+    redes: [
+        {
+            redeSocial: "facebook.com/teste"
+        }
+    ],
+    imagens: [
+        {
+            url: "www.google.com.br/imagem.png"
+        }
+    ]
+};
+
+const instituicaoCompletaErroDiaSemana = {
+    descricao: "Um museu teste",
+    endereco: "Rua Teste 123",
+    latitude: 98.0,
+    longitude: -97.0,
+    nome: "O Museu",
+    observacoes: "Um museu",
+    telefone: "(51)99999999",
+    tempoVisita: 60,
+    horarios: [
+        {
+            dia: "segunda",
+            horaAbertura: "13:00",
+            horaFechamento: "22:00"
+        },
+        {
+            dia: "terca",
+            horaAbertura: "13:00",
+            horaFechamento: "22:00"
+        },
+        {
+            dia: "quarta",
+            horaAbertura: "13:00",
+            horaFechamento: "22:00"
+        }
+    ],
+    redes: [
+        {
+            redeSocial: "facebook.com/teste"
+        }
+    ],
+    imagens: [
+        {
+            url: "www.google.com.br/imagem.png"
+        }
+    ]
+};
+
+const instituicaoCompletaErroTelefone = {
+    descricao: "Um museu teste",
+    endereco: "Rua Teste 123",
+    latitude: 98.0,
+    longitude: -97.0,
+    nome: "O Museu",
+    observacoes: "Um museu",
+    telefone: "5199999999",
+    tempoVisita: 60,
+    horarios: [
+        {
+            dia: "seg",
+            horaAbertura: "13:00",
+            horaFechamento: "22:00"
+        },
+        {
+            dia: "qua",
+            horaAbertura: "13:00",
+            horaFechamento: "22:00"
+        },
+        {
+            dia: "sex",
+            horaAbertura: "13:00",
+            horaFechamento: "22:00"
+        }
+    ],
+    redes: [
+        {
+            redeSocial: "facebook.com/teste"
+        }
+    ],
+    imagens: [
+        {
+            url: "www.google.com.br/imagem.png"
+        }
+    ]
+};
+
+const instituicaoIncompleta = {
+    descricao: "Um museu teste",
+    endereco: "Rua Teste 123",
+    latitude: 98.0,
+    longitude: -97.0,
+    nome: "O Museu",
+    observacoes: "Um museu",
+    telefone: "(51)99999999",
+    tempoVisita: 60
+};
+
+const instituicaoNome = {
+    nome: "O Museu"
+};
+
+const instituicaoHorarios = [
+    {
+        dia: "seg",
+        horaAbertura: "13:00",
+        horaFechamento: "22:00"
     },
     {
-        id: 2,
-        nome: "Metropolin Museu",
-        endereco: "Stret Aveneu",
-        tempoVisita: 2,
-        descricao: "Maior Vão aberto da america do norte",
-        latitude: 40.7143528,
-        longitude: -74.0059731,
-        email: "mnym@masp.com",
-        telefone: "939393934",
-        observacoes: "isto"
-    }];
+        dia: "ter",
+        horaAbertura: "13:00",
+        horaFechamento: "22:00"
+    },
+    {
+        dia: "qua",
+        horaAbertura: "13:00",
+        horaFechamento: "22:00"
+    }
+];
 
-module.exports = { instituicao }
+const instituicaoRedes = [
+    {
+        redeSocial: "facebook.com/teste"
+    }
+];
+
+const instituicaoImagens = [
+    {
+        url: "www.google.com.br/imagem.png"
+    }
+];
+
+module.exports = {
+    instituicaoCompleta, instituicaoIncompleta, instituicaoNome, instituicaoHorarios, instituicaoRedes,
+    instituicaoImagens, instituicaoCompletaErroDiaSemana, instituicaoCompletaErroTelefone
+};
