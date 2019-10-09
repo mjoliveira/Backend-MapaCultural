@@ -1,9 +1,11 @@
-const {Itinerario} = require('../../models');
+const {Itinerario, Instituicao} = require('../../models');
 
 module.exports = {
     buscarItinerarios: () => {
-        return Itinerario.findAll({
-            attributes: {exclude: ["ItinerarioInstituicaoId"]}
+        return Itinerario.findAll({include:[{
+                model: Instituicao,
+                as: 'instituicoes'
+            }]
         });
     }
 };
