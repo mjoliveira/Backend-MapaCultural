@@ -26,5 +26,6 @@ module.exports = (sequelize, DataTypes) => {
             freezeTableName: true,
             tableName: 'Horarios'
         });
+
     return Horario;
 };
