@@ -33,6 +33,38 @@ const itinerarioService = require('../../business/itinerario/itinerarioService')
  * @swagger
  *
  * /api/v1/itinerario:
+ *   post:
+ *    tags: [itinerario]
+ *    description: Add itinerario
+ *    requestBody:
+ *      content:
+ *       application/json:
+ *        schema:
+ *          $ref: '#/definitions/Itinerario'
+ *    responses:
+ *     201:
+ *       description: Created
+ *       content:
+ *        application/json:
+ *          schema:
+ *           $ref: '#/definitions/Itinerario'
+ *
+ */
+router.post('/', async function (req, res) {
+    itinerarioService.salvarItinerario(req.body)
+        .then(itinerario => {
+            res.status(201);
+            res.json(itinerario);
+        }).catch(err => {
+        console.error(err);
+        res.status(err.statusCode).send(err);
+    });
+});
+
+/**
+ * @swagger
+ *
+ * /api/v1/itinerario:
  *   get:
  *     tags: [itinerario]
  *     description: Get Itinerarios
