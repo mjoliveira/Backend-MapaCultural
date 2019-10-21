@@ -20,6 +20,17 @@ const itinerarioService = require('../../business/itinerario/itinerarioService')
  *     format: float
  *    nome:
  *     type: string
+ *    instituicoes:
+ *     type: array
+ *     items:
+ *      $ref: '#/definitions/Instituicao'
+ *
+ *  Instituicao:
+ *   type: object
+ *   properties:
+ *    id:
+ *     type: number
+ *
  */
 
 /**

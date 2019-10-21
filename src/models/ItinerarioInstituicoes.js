@@ -1,5 +1,9 @@
 module.exports = (sequelize, DataTypes) => {
-    const ItinerarioInstituicoes = sequelize.define("ItinerarioInstituicao", {
+    const ItinerarioInstituicoes = sequelize.define("ItinerarioInstituicoes", {
+            InstituicaoId: {
+                type: DataTypes.INTEGER,
+                AllowNull: false
+            },
             ItinerarioId: {
                 type: DataTypes.INTEGER,
                 AllowNull: false
