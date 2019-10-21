@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
             },
 
             dia: {
-                type: DataTypes.DATE,
+                type: DataTypes.STRING,
                 AllowNull: false
             },
 
@@ -26,5 +26,10 @@ module.exports = (sequelize, DataTypes) => {
             freezeTableName: true,
             tableName: 'Horarios'
         });
+
+        Horario.associate = models => {
+            Horario.belongsTo(models.Instituicao, {foreignKey: 'InstituicaoID'});
+        };
+
     return Horario;
 };

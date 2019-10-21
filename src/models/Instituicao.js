@@ -59,15 +59,9 @@ module.exports = (sequelize, DataTypes) => {
 
     Instituicao.associate = models => {
         Instituicao.hasMany(models.Imagem);
-    };
-    Instituicao.associate = models => {
         Instituicao.hasMany(models.Rede);
-    };
-    Instituicao.associate = models => {
-        Instituicao.hasMany(models.Horario);
-    };
-    Instituicao.associate = models => {
-        Instituicao.belongsToMany(models.Itinerario, {through:'ItinerarioInstituicoes'});
+        Instituicao.hasMany(models.Horario, {foreignKey: 'InstituicaoID'});
+        Instituicao.belongsToMany(models.Itinerario, {through: 'ItinerarioInstituicoes', as: "Instituicao"});
     };
 
 
