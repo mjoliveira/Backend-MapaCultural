@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Itinerarioinstituicoes = sequelize.define("ItinerarioInstituicao", {
+    const ItinerarioInstituicoes = sequelize.define("ItinerarioInstituicao", {
             ItinerarioId: {
                 type: DataTypes.INTEGER,
                 AllowNull: false
@@ -16,9 +16,5 @@ module.exports = (sequelize, DataTypes) => {
             tableName: 'ItinerarioInstituicoes'
         });
 
-    Itinerarioinstituicoes.associate = models => {
-        Itinerarioinstituicoes.hasMany(models.Itinerario);
-    };
-
-    return Itinerarioinstituicoes;
+    return ItinerarioInstituicoes;
 };

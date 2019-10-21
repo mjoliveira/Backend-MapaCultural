@@ -64,6 +64,5 @@ module.exports = (sequelize, DataTypes) => {
         Instituicao.belongsToMany(models.Itinerario, {through: 'ItinerarioInstituicoes', as: "Instituicao"});
     };
 
-
     return Instituicao;
 };
