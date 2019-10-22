@@ -1,9 +1,15 @@
 const itinerarioRepository = require("../../infrastructure/itinerario/itinerarioRepository");
+const itinerarioValidator = require("./itinerarioValidador");
 const {ResultadoVazioException} = require("../../utils/Exceptions");
 
 module.exports = {
     salvarItinerario: function (itinerario) {
         return new Promise((resolve, reject) => {
+            try {
+                itinerarioValidator.validarInstitiucoes(itinerario);
+            } catch (err) {
+                reject(err);
+            }
             itinerarioRepository.salvarItinerario(itinerario)
                 .then(itinerario => {
                     resolve(itinerario);
