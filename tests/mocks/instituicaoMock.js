@@ -78,6 +78,7 @@ const instituicaoRetorno = {
 const instituicaoSumarizada = {
     id: 1,
     nome: "O Museu",
+    endereco: "Rua Teste 123",
     latitude: 98.0,
     longitude: -97.0,
     aberto: true,
