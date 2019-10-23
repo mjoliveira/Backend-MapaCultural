@@ -28,10 +28,6 @@ module.exports = {
         });
     },
 
-    buscarInstituicoes: function () {
-        return Instituicao.findAll();
-    },
-
     buscarInstituicaoPorID: function (id) {
         return Instituicao.findOne({
             where: {
@@ -90,11 +86,11 @@ module.exports = {
                     }
                 ]
             }).then(instituicao => {
-                resolve(instituicao)
+                resolve(instituicao);
             }).catch(err => {
-                reject(err)
+                reject(err);
             });
-        })
+        });
     },
 
     atualizarInstituicaoRedes: function (id, redes) {
