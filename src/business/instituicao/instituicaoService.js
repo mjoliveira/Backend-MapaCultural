@@ -1,4 +1,4 @@
-const institutionRepository = require("../../infrastructure/instituicao/instituicaoRepository");
+const instituicaoRepository = require("../../infrastructure/instituicao/instituicaoRepository");
 const { ResultadoVazioException, BussinessException } = require("../../utils/Exceptions");
 const instituicaoValidator = require("./instituicaoValidator");
 
@@ -38,21 +38,22 @@ module.exports = {
 
     buscarInstituicoes: function () {
         return new Promise((resolve, reject) => {
-            institutionRepository.buscarInstituicoes()
-                .then(result => {
-                    if (result.length < 1) {
+
+            instituicaoRepository.buscarInstituicoes()
+                .then(instituticoes => {
+                    if (instituticoes.length < 1) {
                         throw new ResultadoVazioException('instituicao', instituticoes);
                     }
 
                     var listaInstituicoes = []
 
                     //Percorrendo lista retornado pelo banco
-                    for (let i = 0; i < result.length; i++) {
+                    for (let i = 0; i < instituticoes.length; i++) {
                         //Verificação de horário para instituição da lista
                         var aberto = false
 
-                        for (let j = 0; j < result[i].Horarios.length; j++) {
-                            var objetoHorario = result[i].Horarios[j];
+                        for (let j = 0; j < instituticoes[i].horarios.length; j++) {
+                            var objetoHorario = instituticoes[i].horarios[j];
 
                             //Verifica se é o mesmo dia
                             if (this.getDiaAtual() == objetoHorario.dia) {
@@ -65,11 +66,12 @@ module.exports = {
 
                         // Adiciona instuição formatada
                         listaInstituicoes.push({
-                            id: result[i].id,
-                            latitude: result[i].latitude,
-                            longitude: result[i].longitude,
-                            name: result[i].nome,
-                            open: aberto
+                            id: instituticoes[i].id,
+                            latitude: instituticoes[i].latitude,
+                            longitude: instituticoes[i].longitude,
+                            nome: instituticoes[i].nome,
+                            endereco: instituticoes[i].endereco,
+                            aberto: aberto
                         })
                     }
 
@@ -138,13 +140,13 @@ module.exports = {
         var dataAtual = new Date()
 
         switch (dataAtual.getDay()) {
-            case 0: return "domingo"
-            case 1: return "segunda"
-            case 2: return "terca"
-            case 3: return "quarta"
-            case 4: return "quinta"
-            case 5: return "sexta"
-            case 6: return "sabado"
+            case 0: return "dom"
+            case 1: return "seg"
+            case 2: return "ter"
+            case 3: return "qua"
+            case 4: return "qui"
+            case 5: return "sex"
+            case 6: return "sab"
         }
     },
 

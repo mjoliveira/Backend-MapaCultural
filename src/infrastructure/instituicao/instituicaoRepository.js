@@ -85,15 +85,15 @@ module.exports = {
             Instituicao.findAll({
                 include: [
                     {
-                        model: Horario
+                        model: Horario,
+                        as: "horarios"
                     }
                 ]
             }).then(instituicao => {
                 resolve(instituicao)
-            })
-                .catch(err => {
-                    reject(err)
-                });
+            }).catch(err => {
+                reject(err)
+            });
         })
     },
 
