@@ -7,5 +7,9 @@ module.exports = {
                 as: 'instituicoes'
             }]
         });
+    },
+
+    deletar: function (id){
+        return Itinerario.destroy({where: {ItinerarioId: id}})
     }
 };

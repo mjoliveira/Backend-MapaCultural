@@ -51,3 +51,30 @@ router.get('/', async (req, res) => {
         .catch(e => res.status(e.statusCode).send(e));
 });
 module.exports = router;
+
+
+/**
+ * @swagger
+ * tags:
+ *   - name: itinerario
+ *     description: Tudo sobre Itinerario
+ */
+
+/**
+ * @swagger
+ *
+ * /api/v1/itinerario/{id}:
+ *   delete:
+ *     tags: [itinerario]
+ *     description: Deleta Itinerario dado determinado Id
+ *     responses:
+ *       204:
+ *         description: Application Itinerario
+ *
+ */
+router.get('/', async (req, res) => {
+    await itinerarioService.deletar(id)
+        .then(res.status(204))
+        .catch(e => res.status(e.statusCode).send(e));
+});
+module.exports = router;
