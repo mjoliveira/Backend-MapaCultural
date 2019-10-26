@@ -17,12 +17,15 @@ module.exports = {
     },
 
     deletar: function(id) {
+        console.log(id + "<------ service");
         return new Promise((resolve, reject) => {
             itinerarioRepository.deletar(id)
-                .then(itinerarios => resolve(itinerarios))
+                .then(itinerarios => {
+                    resolve(itinerarios);
+                })
                 .catch(err => {
                     reject(err);
                 });
-        })
+        });
     }
 };

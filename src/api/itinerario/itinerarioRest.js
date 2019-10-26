@@ -50,15 +50,6 @@ router.get('/', async (req, res) => {
         .then(itinerario => res.json(itinerario))
         .catch(e => res.status(e.statusCode).send(e));
 });
-module.exports = router;
-
-
-/**
- * @swagger
- * tags:
- *   - name: itinerario
- *     description: Tudo sobre Itinerario
- */
 
 /**
  * @swagger
@@ -67,14 +58,28 @@ module.exports = router;
  *   delete:
  *     tags: [itinerario]
  *     description: Deleta Itinerario dado determinado Id
+ *     parameters:
+ *     - in: path
+ *       name: id
+ *       schema:
+ *        type: integer
+ *       required: true
  *     responses:
  *       204:
  *         description: Application Itinerario
  *
  */
-router.get('/', async (req, res) => {
-    await itinerarioService.deletar(id)
-        .then(res.status(204))
-        .catch(e => res.status(e.statusCode).send(e));
+router.delete('/:id', async (req, res) => {
+    console.log(" reste");
+    itinerarioService.deletar(req.params.id)
+        .then(result => {
+            res.status(204);
+            res.json(`itinerario ${result} deletado`);
+        })
+        .catch(e => {
+            const status = e.statusCode || 500;
+            res.status(status);
+            res.json(e);
+        });
 });
 module.exports = router;

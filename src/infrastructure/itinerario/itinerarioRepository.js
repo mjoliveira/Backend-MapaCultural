@@ -1,4 +1,4 @@
-const {Itinerario, Instituicao} = require('../../models');
+const {Itinerario, Instituicao, ItinerarioInstituicoes} = require('../../models');
 
 module.exports = {
     buscarItinerarios: () => {
@@ -10,6 +10,8 @@ module.exports = {
     },
 
     deletar: function (id){
-        return Itinerario.destroy({where: {ItinerarioId: id}})
+        console.log(id + "<------------");
+        return Itinerario.destroy({where: {id: id}});
+
     }
 };
