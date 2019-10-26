@@ -125,9 +125,8 @@ router.post('/', async function (req, res) {
             res.status(201);
             res.json(instituicao);
         }).catch(err => {
-            console.error(err);
-            res.status(err.statusCode).send(err);
-        });
+        res.status(err.statusCode).send(err);
+    });
 });
 
 /**

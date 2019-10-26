@@ -15,9 +15,10 @@ Passos para executar o projeto
 
 ### Configurando o Banco para desenvolvimento
 
-1. Executar o comando ``` $  npx sequelize-cli db:migrate ```
-2. Executar o comando ``` $  npx sequelize-cli db:seed:all ```
-3. O banco de dados vai ser configurado conforme a pasta database do projeto
+1. Criar um banco de dados chamado **ibere**
+2. Executar o comando ``` $  npx sequelize-cli db:migrate ```
+3. Executar o comando ``` $  npx sequelize-cli db:seed:all ```
+4. O banco de dados vai ser configurado conforme a pasta database do projeto
 
 ### Criação de novas Tabelas e Models
 

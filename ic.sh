@@ -4,7 +4,7 @@ dir=/opt/docker/ibere
 # build web
 cd $dir/web
 pwd
-nvm use 8.9.3
+nvm use 10.15.0
 rm -rf /opt/docker/ibere/api/build
 
 
