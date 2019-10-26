@@ -11,23 +11,37 @@ module.exports = {
             itinerario.instituicoes.map((instituicao, index) => ItinerarioInstituicoes.build({
                 InstituicaoId: instituicao.id,
                 ItinerarioId: itinerarioSalvo.id,
-                ordem: index+1
+                ordem: index + 1
             })).forEach(itinerarioInstituicoes => itinerarioInstituicoes.save());
         });
     },
 
 
     buscarItinerarios: () => {
-        return Itinerario.findAll({include:[{
+        return Itinerario.findAll({
+            include: [{
                 model: Instituicao,
                 as: 'instituicoes'
             }]
         });
     },
 
-    deletar: function (id){
+    deletar: function (id) {
         console.log(id + "<------------");
-        return Itinerario.destroy({where: {id: id}});
-
+        return new Promise((resolve, reject) => {
+            ItinerarioInstituicoes.destroy({where: {ItinerarioId: id}})
+                .then(() => {
+                    Itinerario.destroy({where: {id: id}})
+                        .then(() => {
+                            resolve();
+                        })
+                        .catch(() => {
+                            reject();
+                        });
+                })
+                .catch(() => {
+                    reject();
+                });
+        });
     }
 };
