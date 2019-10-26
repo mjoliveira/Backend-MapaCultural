@@ -84,6 +84,7 @@ router.post('/', async function (req, res) {
     itinerarioService.salvarItinerario(req.body)
         .then(itinerario => {
             res.status(201);
+            console.log("Retorno intinerário", itinerario);
             res.json(itinerario);
         }).catch(err => {
         res.status(err.statusCode).send(err);
@@ -137,8 +138,9 @@ module.exports = router;
  */
 router.put('/:id', async (req, res) => {
     itinerarioService.atualizarItinerario(req.params.id, req.body)
-        .then(() => {
+        .then((resultado) => {
             res.status(200).send();
+            res.json(resultado);
         }).catch(err => {
         console.error(err);
         res.status(err.statusCode).send(err);
