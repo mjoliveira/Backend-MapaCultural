@@ -35,9 +35,12 @@ module.exports = {
 
     atualizarItinerario: function (id, itinerario) {
         return new Promise(((resolve, reject) => {
-            itinerarioRepository.atualizarInstituicao(id, itinerario)
-                .then(() => {
-                    resolve();
+            itinerarioRepository.atualizarItinerario(id, itinerario)
+                .then((itinerarios) => {
+                    if(itinerario == null){
+                        throw new ResultadoVazioException('itinerario', itinerarios);
+                    }
+                    resolve(itinerarios);
                 }).catch(err => {
                 reject(err);
             });

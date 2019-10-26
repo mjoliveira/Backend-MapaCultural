@@ -25,7 +25,7 @@ module.exports = {
         });
     },
 
-    atualizarInstituicao: function (id, itinerario) {
+    atualizarItinerario: function (id, itinerario) {
         return Itinerario.update({
             nome: itinerario.nome,
             tempoCaminhada: itinerario.tempoCaminhada,
