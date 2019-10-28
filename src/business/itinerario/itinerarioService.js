@@ -1,6 +1,7 @@
 const itinerarioRepository = require("../../infrastructure/itinerario/itinerarioRepository");
 const itinerarioValidator = require("./itinerarioValidador");
-const {ResultadoVazioException} = require("../../utils/Exceptions");
+const {ResultadoVazioException, BussinessException} = require("../../utils/Exceptions");
+
 
 module.exports = {
     salvarItinerario: function (itinerario) {
@@ -37,11 +38,18 @@ module.exports = {
         console.log(id + "<------ service");
         return new Promise((resolve, reject) => {
             itinerarioRepository.deletar(id)
-                .then(itinerarios => {
-                    resolve(itinerarios);
+                .then(itinerario => {
+                    if (itinerario ==  null) {
+                        throw new ResultadoVazioException('itinerario', itinerario);
+                    }
+                    resolve(itinerario);
                 })
                 .catch(err => {
-                    reject(err);
+                    if (err.name === 'ResultadoVazioException') {
+                        reject(err);
+                    } else {
+                        reject(new BussinessException('instituicao', err));
+                    }
                 });
         });
     }

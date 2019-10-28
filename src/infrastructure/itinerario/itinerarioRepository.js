@@ -28,20 +28,20 @@ module.exports = {
 
     deletar: function (id) {
         console.log(id + "<------------");
-        return new Promise((resolve, reject) => {
-            ItinerarioInstituicoes.destroy({where: {ItinerarioId: id}})
-                .then(() => {
-                    Itinerario.destroy({where: {id: id}})
-                        .then(() => {
-                            resolve();
-                        })
-                        .catch(() => {
-                            reject();
-                        });
-                })
-                .catch(() => {
-                    reject();
-                });
+        return new Promise(() => {
+            ItinerarioInstituicoes.destroy({where: {ItinerarioId: id}});
+                // .then(() => {
+                //     Itinerario.destroy({where: {id: id}})
+                //         .then(() => {
+                //             resolve();
+                //         })
+                //         .catch(() => {
+                //             reject();
+                //         });
+                // })
+                // .catch(() => {
+                //     reject();
+                // });
         });
     }
 };
