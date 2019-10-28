@@ -18,4 +18,4 @@ const itinerarioSemInstituicoes = {
     tempoBicicleta: 12,
 };
 
-module.exports = { itinerarioCompleto, itinerarioSemInstituicoes};
+module.exports = { itinerarioCompleto, itinerarioSemInstituicoes };
