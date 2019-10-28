@@ -84,7 +84,6 @@ router.post('/', async function (req, res) {
     itinerarioService.salvarItinerario(req.body)
         .then(itinerario => {
             res.status(201);
-            console.log("Retorno intinerário", itinerario);
             res.json(itinerario);
         }).catch(err => {
         res.status(err.statusCode).send(err);
