@@ -1,7 +1,7 @@
 const itinerarioService = require('../../src/business/itinerario/itinerarioService');
 const itinerarioRepository = require('../../src/infrastructure/itinerario/itinerarioRepository');
 const {itinerarioCompleto,
-       itinerarioSemInstituicoes
+       itinerarioVazio
 } = require('../mocks/itinerarioMock');
 
 describe('Teste buscar dados de itinerario', () => {
@@ -28,7 +28,22 @@ describe('Testes Salvar Itinerario', () => {
 
     it("Salva Itinerario sem lista de instituicoes", async () => {
         jest.spyOn(itinerarioRepository, 'salvarItinerario').mockImplementation().mockResolvedValue();
-        return expect(itinerarioService.salvarItinerario(itinerarioSemInstituicoes)).rejects.toThrow('Não é possivel criar um itinerário sem instituições!');
+        return expect(itinerarioService.salvarItinerario(itinerarioVazio)).rejects.toThrow('Não é possivel criar um itinerário sem instituições!');
+    });
+
+});
+
+describe('Testes Atualizar Itinerario', () => {
+    it("Atualiza informacoes basicas", async () => {
+        jest.spyOn(itinerarioRepository, 'atualizarItinerario').mockImplementation().mockResolvedValue();
+        return itinerarioService.atualizarItinerario(1, itinerarioCompleto).then(() => {
+            expect(itinerarioRepository.atualizarItinerario).toHaveBeenCalledWith(1, itinerarioCompleto);
+        });
+    });
+
+    it("Altera itinerario sem lista de instituicoes", async () => {
+        jest.spyOn(itinerarioRepository, 'atualizarItinerario').mockImplementation().mockResolvedValue();
+        return expect(itinerarioService.atualizarItinerario(itinerarioVazio)).rejects.toThrow('Não foi encontrado nenhum valor de itinerario');
     });
 
 });

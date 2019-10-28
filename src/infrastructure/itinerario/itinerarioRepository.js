@@ -23,5 +23,17 @@ module.exports = {
                 as: 'instituicoes'
             }]
         });
+    },
+
+    atualizarItinerario: function (id, itinerario) {
+        return Itinerario.update({
+            nome: itinerario.nome,
+            tempoCaminhada: itinerario.tempoCaminhada,
+            tempoCarro: itinerario.tempoCarro,
+            tempoBicicleta: itinerario.tempoBicicleta
+        }, {
+            where: {id: id}
+        });
     }
+
 };

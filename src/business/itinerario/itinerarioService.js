@@ -10,11 +10,12 @@ module.exports = {
             } catch (err) {
                 reject(err);
             }
+
             itinerarioRepository.salvarItinerario(itinerario)
-                .then(itinerario => {
+                .then(() => {
                     resolve(itinerario);
                 }).catch(err => {
-                reject(err);
+                    reject(err);
             });
         });
     },
@@ -31,5 +32,19 @@ module.exports = {
                 });
             }
         );
-    }
+    },
+
+    atualizarItinerario: function (id, itinerario) {
+        return new Promise(((resolve, reject) => {
+            itinerarioRepository.atualizarItinerario(id, itinerario)
+                .then(() => {
+                    if(itinerario == null){
+                        throw new ResultadoVazioException('itinerario', itinerario);
+                    }
+                    resolve(itinerario);
+                }).catch(err => {
+                reject(err);
+            });
+        }));
+    },
 };
