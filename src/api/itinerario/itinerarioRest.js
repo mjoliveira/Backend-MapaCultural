@@ -141,7 +141,6 @@ router.put('/:id', async (req, res) => {
             res.status(200).send();
             res.json(resultado);
         }).catch(err => {
-        console.error(err);
         res.status(err.statusCode).send(err);
     });
 });
