@@ -125,7 +125,6 @@ router.post('/', async function (req, res) {
             res.status(201);
             res.json(instituicao);
         }).catch(err => {
-        console.error(err);
         res.status(err.statusCode).send(err);
     });
 });
@@ -147,9 +146,15 @@ router.post('/', async function (req, res) {
  *
  */
 router.get('/', async (req, res) => {
-    await instituicaoService.buscarInstituicoes()
-        .then(instituicao => res.json(instituicao))
-        .catch(e => res.status(e.statusCode).send(e));
+    instituicaoService.buscarInstituicoes()
+        .then((result) => {
+            res.status(200);
+            res.json(result);
+        })
+        .catch((err) => {
+            res.status(400);
+            res.json(err);
+        });
 });
 
 
@@ -180,9 +185,9 @@ router.put('/:id', async (req, res) => {
         .then(() => {
             res.status(200).send();
         }).catch(err => {
-        console.error(err);
-        res.status(err.statusCode).send(err);
-    });
+            console.error(err);
+            res.status(err.statusCode).send(err);
+        });
 });
 
 /**
@@ -214,9 +219,9 @@ router.put('/:id/horarios', async (req, res) => {
         .then(() => {
             res.status(200).send();
         }).catch(err => {
-        console.error(err);
-        res.status(err.statusCode).send(err);
-    });
+            console.error(err);
+            res.status(err.statusCode).send(err);
+        });
 });
 
 /**
@@ -248,9 +253,9 @@ router.put('/:id/redes', async (req, res) => {
         .then(() => {
             res.status(200).send();
         }).catch(err => {
-        console.error(err);
-        res.status(err.statusCode).send(err);
-    });
+            console.error(err);
+            res.status(err.statusCode).send(err);
+        });
 });
 
 /**
@@ -282,9 +287,9 @@ router.put('/:id/imagens', async (req, res) => {
         .then(() => {
             res.status(200).send();
         }).catch(err => {
-        console.error(err);
-        res.status(err.statusCode).send(err);
-    });
+            console.error(err);
+            res.status(err.statusCode).send(err);
+        });
 });
 
 /**

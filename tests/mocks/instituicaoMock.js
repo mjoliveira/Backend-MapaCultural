@@ -36,6 +36,54 @@ const instituicaoCompleta = {
     ]
 };
 
+const instituicaoRetorno = {
+    id: 1,
+    descricao: "Um museu teste",
+    endereco: "Rua Teste 123",
+    latitude: 98.0,
+    longitude: -97.0,
+    nome: "O Museu",
+    observacoes: "Um museu",
+    telefone: "(51)99999999",
+    tempoVisita: 60,
+    horarios: [
+        {
+            dia: "seg",
+            horaAbertura: "13:00",
+            horaFechamento: "22:00"
+        },
+        {
+            dia: "ter",
+            horaAbertura: "13:00",
+            horaFechamento: "22:00"
+        },
+        {
+            dia: "qua",
+            horaAbertura: "13:00",
+            horaFechamento: "22:00"
+        }
+    ],
+    redes: [
+        {
+            redeSocial: "facebook.com/teste"
+        }
+    ],
+    imagens: [
+        {
+            url: "www.google.com.br/imagem.png"
+        }
+    ]
+};
+
+const instituicaoSumarizada = {
+    id: 1,
+    nome: "O Museu",
+    endereco: "Rua Teste 123",
+    latitude: 98.0,
+    longitude: -97.0,
+    aberto: true,
+}
+
 const instituicaoCompletaErroDiaSemana = {
     descricao: "Um museu teste",
     endereco: "Rua Teste 123",
@@ -158,6 +206,6 @@ const instituicaoImagens = [
 ];
 
 module.exports = {
-    instituicaoCompleta, instituicaoIncompleta, instituicaoNome, instituicaoHorarios, instituicaoRedes,
+    instituicaoCompleta, instituicaoRetorno, instituicaoSumarizada, instituicaoIncompleta, instituicaoNome, instituicaoHorarios, instituicaoRedes,
     instituicaoImagens, instituicaoCompletaErroDiaSemana, instituicaoCompletaErroTelefone
 };
