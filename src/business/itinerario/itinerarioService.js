@@ -38,18 +38,11 @@ module.exports = {
         console.log(id + "<------ service");
         return new Promise((resolve, reject) => {
             itinerarioRepository.deletar(id)
-                .then(itinerario => {
-                    if (itinerario ==  null) {
-                        throw new ResultadoVazioException('itinerario', itinerario);
-                    }
-                    resolve(itinerario);
+                .then(itinerarios => {
+                    resolve(itinerarios);
                 })
                 .catch(err => {
-                    if (err.name === 'ResultadoVazioException') {
-                        reject(err);
-                    } else {
-                        reject(new BussinessException('instituicao', err));
-                    }
+                    reject(err);
                 });
         });
     }
