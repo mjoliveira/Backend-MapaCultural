@@ -2,6 +2,8 @@ const instituicaoService = require('../../src/business/instituicao/instituicaoSe
 const instituicaoRepository = require('../../src/infrastructure/instituicao/instituicaoRepository');
 const {
     instituicaoCompleta,
+    instituicaoRetorno,
+    instituicaoSumarizada,
     instituicaoIncompleta,
     instituicaoNome,
     instituicaoHorarios,
@@ -14,9 +16,11 @@ const {
 
 describe('Testes Buscar Instituicao', () => {
     it("Retorna Lista de Instituicao", async () => {
-        jest.spyOn(instituicaoRepository, 'buscarInstituicoes').mockResolvedValue([instituicaoCompleta]);
+        jest.spyOn(instituicaoRepository, 'buscarInstituicoes').mockResolvedValue([instituicaoRetorno]);
+        jest.spyOn(instituicaoService, 'getDiaAtual').mockReturnValue("seg");
+        jest.spyOn(instituicaoService, 'temHorarioCorrespondente').mockReturnValue(true);
 
-        return expect(instituicaoService.buscarInstituicoes()).resolves.toEqual([instituicaoCompleta]);
+        return expect(instituicaoService.buscarInstituicoes()).resolves.toEqual([instituicaoSumarizada]);
     });
 
     it('Testa exception para lista vazia', async () => {
@@ -29,9 +33,9 @@ describe('Testes Buscar Instituicao', () => {
 
 describe('Testes Buscar Instituicao', () => {
     it('Busca instituição por ID', async () => {
-        jest.spyOn(instituicaoRepository, 'buscarInstituicaoPorID').mockResolvedValue(instituicaoCompleta);
+        jest.spyOn(instituicaoRepository, 'buscarInstituicaoPorID').mockResolvedValue(instituicaoRetorno);
 
-        return expect(instituicaoService.buscarInstituicaoPorID(2)).resolves.toEqual(instituicaoCompleta);
+        return expect(instituicaoService.buscarInstituicaoPorID(2)).resolves.toEqual(instituicaoRetorno);
     });
 
     it('Testa execption para ID não encontrado', async () => {

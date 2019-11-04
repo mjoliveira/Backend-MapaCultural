@@ -10,12 +10,9 @@ const itinerarioCompleto = {
         }]
 };
 
-const itinerarioSemInstituicoes = {
-    id: 1,
-    nome:  "Rota caminhos do campo",
-    tempoCaminhada: 12,
-    tempoCarro: 12,
-    tempoBicicleta: 12,
+const itinerarioVazio = {
+
 };
 
-module.exports = { itinerarioCompleto, itinerarioSemInstituicoes };
+
+module.exports = { itinerarioCompleto, itinerarioVazio};

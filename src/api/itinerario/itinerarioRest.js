@@ -31,6 +31,25 @@ const itinerarioService = require('../../business/itinerario/itinerarioService')
  *    id:
  *     type: number
  *
+ *  ItinerarioAtualizacao:
+ *   type: object
+ *   properties:
+ *    tempoCaminhada:
+ *     type: number
+ *     format: float
+ *    tempoCarro:
+ *     type: number
+ *     format: float
+ *    tempoBicicleta:
+ *     type: number
+ *     format: float
+ *    nome:
+ *     type: string
+ *    instituicoes:
+ *     type: array
+ *     items:
+ *      $ref: '#/definitions/Instituicao'
+ *
  */
 
 /**
@@ -125,3 +144,35 @@ router.delete('/:id', async (req, res) => {
         });
 });
 module.exports = router;
+
+/**
+ * @swagger
+ *
+ * /api/v1/itinerario/{id}:
+ *   put:
+ *    tags: [itinerario]
+ *    description: Atualiza itinerario
+ *    parameters:
+ *     - in: path
+ *       name: id
+ *       schema:
+ *        type: integer
+ *       required: true
+ *    requestBody:
+ *      content:
+ *       application/json:
+ *        schema:
+ *          $ref: '#/definitions/ItinerarioAtualizacao'
+ *    responses:
+ *     200:
+ *       description: Ok
+ */
+router.put('/:id', async (req, res) => {
+    itinerarioService.atualizarItinerario(req.params.id, req.body)
+        .then((resultado) => {
+            res.status(200).send();
+            res.json(resultado);
+        }).catch(err => {
+        res.status(err.statusCode).send(err);
+    });
+});

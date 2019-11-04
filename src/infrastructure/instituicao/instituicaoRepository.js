@@ -1,4 +1,4 @@
-const {Instituicao, Horario, Rede, Imagem} = require('../../models');
+const { Instituicao, Horario, Rede, Imagem } = require('../../models');
 
 module.exports = {
     salvarInstituicao: function (instituicao) {
@@ -26,10 +26,6 @@ module.exports = {
                 as: "imagens"
             }]
         });
-    },
-
-    buscarInstituicoes: function () {
-        return Instituicao.findAll();
     },
 
     buscarInstituicaoPorID: function (id) {
@@ -61,12 +57,12 @@ module.exports = {
             telefone: instituicao.telefone,
             observacoes: instituicao.observacoes
         }, {
-            where: {id: id}
+            where: { id: id }
         });
     },
 
     atualizarInstituicaoHorarios: function (id, horarios) {
-        return Horario.destroy({where: {InstituicaoID: id}})
+        return Horario.destroy({ where: { InstituicaoID: id } })
             .then(() => {
                 horarios.map(horario => Horario.build({
                     dia: horario.dia,
@@ -80,8 +76,25 @@ module.exports = {
             });
     },
 
+    buscarInstituicoes: function () {
+        return new Promise((resolve, reject) => {
+            Instituicao.findAll({
+                include: [
+                    {
+                        model: Horario,
+                        as: "horarios"
+                    }
+                ]
+            }).then(instituicao => {
+                resolve(instituicao);
+            }).catch(err => {
+                reject(err);
+            });
+        });
+    },
+
     atualizarInstituicaoRedes: function (id, redes) {
-        return Rede.destroy({where: {InstituicaoID: id}})
+        return Rede.destroy({ where: { InstituicaoID: id } })
             .then(() => {
                 redes.map(rede => Rede.build({
                     redeSocial: rede.redeSocial,
@@ -94,7 +107,7 @@ module.exports = {
     },
 
     atualizarInstituicaoImagens: function (id, imagens) {
-        return Imagem.destroy({where: {InstituicaoID: id}})
+        return Imagem.destroy({ where: { InstituicaoID: id } })
             .then(() => {
                 imagens.map(imagem => Imagem.build({
                     url: imagem.url,

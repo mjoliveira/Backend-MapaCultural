@@ -26,6 +26,17 @@ module.exports = {
         });
     },
 
+    atualizarItinerario: function (id, itinerario) {
+        return Itinerario.update({
+            nome: itinerario.nome,
+            tempoCaminhada: itinerario.tempoCaminhada,
+            tempoCarro: itinerario.tempoCarro,
+            tempoBicicleta: itinerario.tempoBicicleta
+        }, {
+            where: {id: id}
+        });
+    },
+
     deletar: function (id) {
         console.log(id + "<------------");
         return new Promise((resolve, reject) => {
@@ -44,4 +55,5 @@ module.exports = {
                 });
         });
     }
+
 };

@@ -1,6 +1,6 @@
 const itinerarioRepository = require("../../infrastructure/itinerario/itinerarioRepository");
 const itinerarioValidator = require("./itinerarioValidador");
-const {ResultadoVazioException, BussinessException} = require("../../utils/Exceptions");
+const {ResultadoVazioException } = require("../../utils/Exceptions");
 
 
 module.exports = {
@@ -11,11 +11,12 @@ module.exports = {
             } catch (err) {
                 reject(err);
             }
+
             itinerarioRepository.salvarItinerario(itinerario)
-                .then(itinerario => {
+                .then(() => {
                     resolve(itinerario);
                 }).catch(err => {
-                reject(err);
+                    reject(err);
             });
         });
     },
@@ -45,5 +46,19 @@ module.exports = {
                     reject(err);
                 });
         });
-    }
+    },
+
+    atualizarItinerario: function (id, itinerario) {
+        return new Promise(((resolve, reject) => {
+            itinerarioRepository.atualizarItinerario(id, itinerario)
+                .then(() => {
+                    if(itinerario == null){
+                        throw new ResultadoVazioException('itinerario', itinerario);
+                    }
+                    resolve(itinerario);
+                }).catch(err => {
+                reject(err);
+            });
+        }));
+    },
 };
