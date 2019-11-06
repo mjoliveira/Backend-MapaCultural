@@ -36,11 +36,11 @@ module.exports = {
     },
 
     deletar: function(id) {
-        console.log(id + "<------ service");
+        console.log("Teste - Service. ID: " + id);
         return new Promise((resolve, reject) => {
             itinerarioRepository.deletar(id)
-                .then(itinerarios => {
-                    resolve(itinerarios);
+                .then(() => {
+                    resolve();
                 })
                 .catch(err => {
                     reject(err);

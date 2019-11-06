@@ -38,7 +38,7 @@ module.exports = {
     },
 
     deletar: function (id) {
-        console.log(id + "<------------");
+        console.log("Teste - Repository. ID: " + id);
         return new Promise((resolve, reject) => {
             ItinerarioInstituicoes.destroy({where: {ItinerarioId: id}})
                 .then(() => {
