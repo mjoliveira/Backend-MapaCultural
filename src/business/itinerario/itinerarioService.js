@@ -35,6 +35,7 @@ module.exports = {
         );
     },
 
+<<<<<<< HEAD
     deletar: function(id) {
         console.log("Teste - Service. ID: " + id);
         return new Promise((resolve, reject) => {
@@ -51,6 +52,8 @@ module.exports = {
         });
     },
 
+=======
+>>>>>>> 09ecc788d2046283426a57428f51399ce4f4a51f
     atualizarItinerario: function (id, itinerario) {
         return new Promise(((resolve, reject) => {
             itinerarioRepository.atualizarItinerario(id, itinerario)

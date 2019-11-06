@@ -47,19 +47,6 @@ describe('Testes Atualizar Itinerario', () => {
     });
 
 });
-// describe('Testes Deletar Itinerario', () => {
-//     it("Deleta Itinerario com ID", async () => {
-//         jest.spyOn(itinerarioRepository, 'deletar').mockImplementation().mockResolvedValue();
-//         return itinerarioRepository.deletar(itinerarioCompleto.id).then(() => {
-//             expect(itinerarioRepository.deletar(1)).toHaveBeenCalledWith(itinerarioCompleto);
-//         });
-//     });
-//
-//     it ("Deleta Itinerario sem ID", async () => {
-//         jest.spyOn(itinerarioRepository, 'deletar').mockImplementation().mockResolvedValue();
-//         return expect(itinerarioService.salvarItinerario()).rejects.toThrow('Não é possível deletar um itinerário sem ');
-//     });
-// });
 
 describe('Testes Deletar Itinerario', () => {
     it('Deleta Itinerario por ID', async () => {

@@ -35,6 +35,7 @@ module.exports = {
         }, {
             where: {id: id}
         });
+<<<<<<< HEAD
     },
 
     deletar: function (id) {
@@ -54,6 +55,8 @@ module.exports = {
                     reject(err);
                 });
         });
+=======
+>>>>>>> 09ecc788d2046283426a57428f51399ce4f4a51f
     }
 
 };
