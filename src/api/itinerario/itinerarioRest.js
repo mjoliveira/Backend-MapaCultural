@@ -131,7 +131,6 @@ router.get('/', async (req, res) => {
  *
  */
 router.delete('/:id', async (req, res) => {
-    console.log("Teste - Rest");
     itinerarioService.deletar(req.params.id)
         .then(result => {
             res.status(204);

@@ -36,7 +36,6 @@ module.exports = {
     },
 
     deletar: function(id) {
-        console.log("Teste - Service. ID: " + id);
         return new Promise((resolve, reject) => {
             itinerarioRepository.deletar(id)
                 .then((itinerario) => {
