@@ -63,14 +63,14 @@ describe('Testes Atualizar Itinerario', () => {
 
 describe('Testes Deletar Itinerario', () => {
     it('Deleta Itinerario por ID', async () => {
-        jest.spyOn(itinerarioRepository, 'deletar').mockResolvedValue(itinerarioCompleto);
+        jest.spyOn(itinerarioRepository, 'deletar').mockResolvedValue();
 
-        return expect(itinerarioService.deletar(itinerarioCompleto.id)).resolves.toEqual(itinerarioCompleto);
+        return expect(itinerarioService.deletar(itinerarioCompleto.id)).resolves;
     });
 
     it('Testa execption para ID não encontrado', async () => {
-        jest.spyOn(itinerarioRepository, 'deletar').mockRejectedValue();
+        jest.spyOn(itinerarioRepository, 'deletar').mockResolvedValue(0);
 
-        return expect(itinerarioRepository.deletar(2)).rejects.toThrow('Não foi encontrado nenhum valor de itinerario');
+        return expect(itinerarioService.deletar(2)).rejects.toThrow('Não foi encontrado nenhum valor de itinerario');
     });
 });

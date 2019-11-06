@@ -43,15 +43,15 @@ module.exports = {
             ItinerarioInstituicoes.destroy({where: {ItinerarioId: id}})
                 .then(() => {
                     Itinerario.destroy({where: {id: id}})
-                        .then(() => {
-                            resolve();
+                        .then((itinerario) => {
+                            resolve(itinerario);
                         })
-                        .catch(() => {
-                            reject();
+                        .catch(err => {
+                            reject(err);
                         });
                 })
-                .catch(() => {
-                    reject();
+                .catch((err) => {
+                    reject(err);
                 });
         });
     }

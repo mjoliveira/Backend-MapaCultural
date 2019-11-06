@@ -39,7 +39,10 @@ module.exports = {
         console.log("Teste - Service. ID: " + id);
         return new Promise((resolve, reject) => {
             itinerarioRepository.deletar(id)
-                .then(() => {
+                .then((itinerario) => {
+                    if (itinerario === 0) {
+                        throw new ResultadoVazioException('itinerario', id);
+                    }
                     resolve();
                 })
                 .catch(err => {
