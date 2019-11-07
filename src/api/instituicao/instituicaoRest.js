@@ -32,7 +32,7 @@ const instituicaoService = require('../../business/instituicao/instituicaoServic
  *    url:
  *     type: string
  *
- *  Institution:
+ *  Instituica:
  *   type: object
  *   properties:
  *    descricao:
