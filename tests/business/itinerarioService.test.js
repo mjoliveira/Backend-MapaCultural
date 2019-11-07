@@ -47,3 +47,17 @@ describe('Testes Atualizar Itinerario', () => {
     });
 
 });
+
+describe('Testes Deletar Itinerario', () => {
+    it('Deleta Itinerario por ID', async () => {
+        jest.spyOn(itinerarioRepository, 'deletar').mockResolvedValue();
+
+        return expect(itinerarioService.deletar(itinerarioCompleto.id)).resolves;
+    });
+
+    it('Testa execption para ID não encontrado', async () => {
+        jest.spyOn(itinerarioRepository, 'deletar').mockResolvedValue(0);
+
+        return expect(itinerarioService.deletar(2)).rejects.toThrow('Não foi encontrado nenhum valor de itinerario');
+    });
+});
