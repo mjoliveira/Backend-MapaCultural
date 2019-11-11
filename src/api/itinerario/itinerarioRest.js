@@ -142,7 +142,6 @@ router.delete('/:id', async (req, res) => {
             res.json(e);
         });
 });
-module.exports = router;
 
 /**
  * @swagger
@@ -175,3 +174,5 @@ router.put('/:id', async (req, res) => {
         res.status(err.statusCode).send(err);
     });
 });
+
+module.exports = router;
