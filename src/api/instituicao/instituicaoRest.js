@@ -32,7 +32,7 @@ const instituicaoService = require('../../business/instituicao/instituicaoServic
  *    url:
  *     type: string
  *
- *  Instituicao:
+ *  Instituica:
  *   type: object
  *   properties:
  *    descricao:
@@ -109,14 +109,14 @@ const instituicaoService = require('../../business/instituicao/instituicaoServic
  *      content:
  *       application/json:
  *        schema:
- *          $ref: '#/definitions/Instituicao'
+ *          $ref: '#/definitions/Institution'
  *    responses:
  *     201:
  *       description: Created
  *       content:
  *        application/json:
  *          schema:
- *           $ref: '#/definitions/Instituicao'
+ *           $ref: '#/definitions/Institution'
  *
  */
 router.post('/', async function (req, res) {
