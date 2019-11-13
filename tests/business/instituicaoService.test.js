@@ -1,5 +1,6 @@
 const instituicaoService = require('../../src/business/instituicao/instituicaoService');
 const instituicaoRepository = require('../../src/infrastructure/instituicao/instituicaoRepository');
+const calendarioUtils = require('../../src/utils/CalendarioUtils');
 const {
     instituicaoCompleta,
     instituicaoRetorno,
@@ -17,8 +18,8 @@ const {
 describe('Testes Buscar Instituicao', () => {
     it("Retorna Lista de Instituicao", async () => {
         jest.spyOn(instituicaoRepository, 'buscarInstituicoes').mockResolvedValue([instituicaoRetorno]);
-        jest.spyOn(instituicaoService, 'getDiaAtual').mockReturnValue("seg");
-        jest.spyOn(instituicaoService, 'temHorarioCorrespondente').mockReturnValue(true);
+        jest.spyOn(calendarioUtils, 'getDiaAtual').mockReturnValue("seg");
+        jest.spyOn(calendarioUtils, 'temHorarioCorrespondente').mockReturnValue(true);
 
         return expect(instituicaoService.buscarInstituicoes()).resolves.toEqual([instituicaoSumarizada]);
     });

@@ -1,4 +1,5 @@
 const {ValidacaoException} = require("../../utils/Exceptions");
+const calendarioUtils = require("../../utils/CalendarioUtils");
 const diasSemana = ['seg', 'ter', 'qua', 'qui', 'sex', 'sab', 'dom'];
 const telefoneRegex = new RegExp("^[(]\\d{2}[)]\\d{8,9}$");
 
@@ -19,8 +20,25 @@ const validarDia = (horario) => {
     }
 };
 
+const validarInstituicaoAberta = (instituicao) => {
+    let aberto = false;
+
+    for (let j = 0; j < instituicao.horarios.length; j++) {
+        let objetoHorario = instituicao.horarios[j];
+
+        if (calendarioUtils.getDiaAtual() === objetoHorario.dia) {
+            if (calendarioUtils.temHorarioCorrespondente(objetoHorario)) {
+                aberto = true;
+            }
+        }
+    }
+
+    return aberto;
+};
+
 
 module.exports = {
     validarDia,
-    validarInstituicao
+    validarInstituicao,
+    validarInstituicaoAberta
 };
