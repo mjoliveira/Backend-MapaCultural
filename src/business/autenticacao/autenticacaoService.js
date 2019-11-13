@@ -10,6 +10,8 @@ module.exports = {
 
                         usuario.token = this.gerarToken();
                         usuario.validadeToken = this.gerarValidadeToken();
+                        usuario.id = resultado.id
+                        usuario.nome = resultado.nome
 
                         autenticacaoRepository.atualizarUsuario(usuario)
                             .then(() => {
@@ -19,9 +21,10 @@ module.exports = {
                                 });
                             }).catch((err) => {
                                 reject(err);
-                        });
+                            });
+                    } else {
+                        reject("Usuário ou senha inválida")
                     }
-                    resolve(resultado);
                 })
                 .catch((err) => {
                     reject(err);
@@ -30,7 +33,12 @@ module.exports = {
     },
 
     gerarToken: function () {
-        return Math.random().toString(36).substring(24);
+        var resultado = "";
+        var caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        for (var i = 0; i < 24; i++) {
+            resultado += caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+        }
+        return resultado;
     },
 
     gerarValidadeToken: function () {
