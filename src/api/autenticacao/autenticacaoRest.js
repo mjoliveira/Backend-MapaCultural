@@ -27,7 +27,7 @@ const autenticacaoService = require('../../business/autenticacao/autenticacaoSer
  *
  * /api/v1/autenticacao:
  *   post:
- *    tags: [autencicacao]
+ *    tags: [autenticacao]
  *    description: Fazer login
  *    requestBody:
  *      content:
