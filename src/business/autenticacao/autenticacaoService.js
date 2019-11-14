@@ -1,4 +1,5 @@
 const autenticacaoRepository = require("../../infrastructure/autenticacao/autenticacaoRepository");
+const bcrypt = require("bcrypt");
 
 module.exports = {
 
@@ -6,25 +7,27 @@ module.exports = {
         return new Promise((resolve, reject) => {
             autenticacaoRepository.login(usuario)
                 .then((resultado) => {
-                    if (resultado.senha === usuario.senha) {
 
-                        usuario.token = this.gerarToken();
-                        usuario.validadeToken = this.gerarValidadeToken();
-                        usuario.id = resultado.id
-                        usuario.nome = resultado.nome
+                    bcrypt.compare(usuario.senha, resultado.senha).then((senhaValida) => {
+                        if (senhaValida) {
+                            usuario.token = this.gerarToken();
+                            usuario.validadeToken = this.gerarValidadeToken();
+                            usuario.id = resultado.id;
+                            usuario.nome = resultado.nome;
 
-                        autenticacaoRepository.atualizarUsuario(usuario)
-                            .then(() => {
-                                resolve({
-                                    "token": usuario.token,
-                                    "validade": usuario.validadeToken
+                            autenticacaoRepository.atualizarUsuario(usuario)
+                                .then(() => {
+                                    resolve({
+                                        "token": usuario.token,
+                                        "validade": usuario.validadeToken
+                                    });
+                                }).catch((err) => {
+                                    reject(err);
                                 });
-                            }).catch((err) => {
-                                reject(err);
-                            });
-                    } else {
-                        reject("Usuário ou senha inválida")
-                    }
+                        } else {
+                            reject("Usuário ou senha inválidos")
+                        }
+                    });
                 })
                 .catch((err) => {
                     reject(err);
