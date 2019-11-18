@@ -32,7 +32,7 @@ const instituicaoService = require('../../business/instituicao/instituicaoServic
  *    url:
  *     type: string
  *
- *  Instituica:
+ *  Instituicao:
  *   type: object
  *   properties:
  *    descricao:
@@ -66,6 +66,24 @@ const instituicaoService = require('../../business/instituicao/instituicaoServic
  *     type: array
  *     items:
  *      $ref: '#/definitions/Imagem'
+ *
+ *  InstituicaoLista:
+ *   type: object
+ *   properties:
+ *    id:
+ *     type: number
+ *    endereco:
+ *     type: string
+ *    latitude:
+ *     type: number
+ *     format: float
+ *    longitude:
+ *     type: number
+ *     format: float
+ *    nome:
+ *     type: string
+ *    aberto:
+ *     type: boolean
  *
  *  InstituicaoAtualizacao:
  *   type: object
@@ -109,14 +127,14 @@ const instituicaoService = require('../../business/instituicao/instituicaoServic
  *      content:
  *       application/json:
  *        schema:
- *          $ref: '#/definitions/Institution'
+ *          $ref: '#/definitions/Instituicao'
  *    responses:
  *     201:
  *       description: Created
  *       content:
  *        application/json:
  *          schema:
- *           $ref: '#/definitions/Institution'
+ *           $ref: '#/definitions/Instituicao'
  *
  */
 router.post('/', async function (req, res) {
@@ -142,7 +160,9 @@ router.post('/', async function (req, res) {
  *         content:
  *          application/json:
  *            schema:
- *              $ref: '#/definitions/Instituicao'
+ *             type: array
+ *             items:
+ *              $ref: '#/definitions/InstituicaoLista'
  *
  */
 router.get('/', async (req, res) => {
