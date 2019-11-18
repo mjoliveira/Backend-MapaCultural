@@ -23,9 +23,34 @@ const itinerarioService = require('../../business/itinerario/itinerarioService')
  *    instituicoes:
  *     type: array
  *     items:
- *      $ref: '#/definitions/Instituicao'
+ *      $ref: '#/definitions/InstituicaoItinerarioCompleta'
  *
- *  Instituicao:
+ *  InstituicaoItinerarioCompleta:
+ *   type: object
+ *   properties:
+ *    id:
+ *     type: number
+ *    descricao:
+ *     type: string
+ *    endereco:
+ *     type: string
+ *    latitude:
+ *     type: number
+ *     format: float
+ *    longitude:
+ *     type: number
+ *     format: float
+ *    nome:
+ *     type: string
+ *    observacoes:
+ *     type: string
+ *    telefone:
+ *     type: string
+ *     pattern: '^[(]\d{2}[)]\d{8,9}$'
+ *    tempoVisita:
+ *     type: integer
+ *
+ *  InstituicaoRoteiro:
  *   type: object
  *   properties:
  *    id:
@@ -48,7 +73,7 @@ const itinerarioService = require('../../business/itinerario/itinerarioService')
  *    instituicoes:
  *     type: array
  *     items:
- *      $ref: '#/definitions/Instituicao'
+ *      $ref: '#/definitions/InstituicaoItinerarioCompleta'
  *
  */
 
