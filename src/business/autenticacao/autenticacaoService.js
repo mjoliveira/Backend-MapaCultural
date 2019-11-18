@@ -19,13 +19,13 @@ module.exports = {
                                 .then(() => {
                                     resolve({
                                         "token": usuario.token,
-                                        "validade": usuario.validadeToken
+                                        "validadeToken": usuario.validadeToken
                                     });
                                 }).catch((err) => {
                                     reject(err);
                                 });
                         } else {
-                            reject("Usuário ou senha inválidos")
+                            reject("Usuário ou senha inválidos");
                         }
                     });
                 })
