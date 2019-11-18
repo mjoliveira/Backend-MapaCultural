@@ -11,14 +11,15 @@ module.exports = {
             itinerario.instituicoes.map((instituicao, index) => ItinerarioInstituicoes.build({
                 InstituicaoId: instituicao.id,
                 ItinerarioId: itinerarioSalvo.id,
-                ordem: index+1
+                ordem: index + 1
             })).forEach(itinerarioInstituicoes => itinerarioInstituicoes.save());
         });
     },
 
 
     buscarItinerarios: () => {
-        return Itinerario.findAll({include:[{
+        return Itinerario.findAll({
+            include: [{
                 model: Instituicao,
                 as: 'instituicoes'
             }]
@@ -33,6 +34,24 @@ module.exports = {
             tempoBicicleta: itinerario.tempoBicicleta
         }, {
             where: {id: id}
+        });
+    },
+
+    deletar: function (id) {
+        return new Promise((resolve, reject) => {
+            ItinerarioInstituicoes.destroy({where: {ItinerarioId: id}})
+                .then(() => {
+                    Itinerario.destroy({where: {id: id}})
+                        .then((itinerario) => {
+                            resolve(itinerario);
+                        })
+                        .catch(err => {
+                            reject(err);
+                        });
+                })
+                .catch((err) => {
+                    reject(err);
+                });
         });
     }
 

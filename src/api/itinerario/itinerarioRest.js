@@ -111,6 +111,37 @@ router.get('/', async (req, res) => {
         .then(itinerario => res.json(itinerario))
         .catch(e => res.status(e.statusCode).send(e));
 });
+
+/**
+ * @swagger
+ *
+ * /api/v1/itinerario/{id}:
+ *   delete:
+ *     tags: [itinerario]
+ *     description: Deleta Itinerario dado determinado Id
+ *     parameters:
+ *     - in: path
+ *       name: id
+ *       schema:
+ *        type: integer
+ *       required: true
+ *     responses:
+ *       204:
+ *         description: Application Itinerario
+ *
+ */
+router.delete('/:id', async (req, res) => {
+    itinerarioService.deletar(req.params.id)
+        .then(result => {
+            res.status(204);
+            res.json(`itinerario ${result} deletado`);
+        })
+        .catch(e => {
+            const status = e.statusCode || 500;
+            res.status(status);
+            res.json(e);
+        });
+});
 module.exports = router;
 
 /**

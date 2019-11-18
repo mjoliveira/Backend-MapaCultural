@@ -71,7 +71,6 @@ module.exports = {
                     InstituicaoId: id
                 })).forEach(instance => instance.save());
             }).catch(err => {
-                console.log(err);
                 throw err;
             });
     },
@@ -101,7 +100,6 @@ module.exports = {
                     InstituicaoId: id
                 })).forEach(instance => instance.save());
             }).catch(err => {
-                console.log(err);
                 throw err;
             });
     },
