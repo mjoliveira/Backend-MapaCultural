@@ -148,6 +148,8 @@ router.post('/', async function (req, res) {
 router.get('/', async (req, res) => {
     instituicaoService.buscarInstituicoes()
         .then((result) => {
+            res.set('X-Total-Count', result.length);
+            res.header('Access-Control-Expose-Headers', 'X-Total-Count');
             res.status(200);
             res.json(result);
         })
