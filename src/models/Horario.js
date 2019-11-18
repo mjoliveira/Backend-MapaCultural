@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
         });
 
         Horario.associate = models => {
-            Horario.belongsTo(models.Instituicao, {foreignKey: 'InstituicaoID'});
+            Horario.belongsTo(models.Instituicao);
         };
 
     return Horario;
