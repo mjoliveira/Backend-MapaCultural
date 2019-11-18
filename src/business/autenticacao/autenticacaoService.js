@@ -25,7 +25,7 @@ module.exports = {
                                     reject(err);
                                 });
                         } else {
-                            reject("Usuário ou senha inválidos");
+                            reject("Usuário ou senha inválidos!");
                         }
                     });
                 })

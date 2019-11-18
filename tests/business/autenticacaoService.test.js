@@ -2,6 +2,7 @@ const autenticacaoService = require('../../src/business/autenticacao/autenticaca
 const autenticacaoRepository = require('../../src/infrastructure/autenticacao/autenticacaoRepository');
 const {
     adminCadastrado,
+    adminSemLogin,
     adminLogin,
     retornoLogin
 } = require('../mocks/autenticacaoMock');
@@ -15,5 +16,11 @@ describe('Testes autenticacao', () => {
         jest.spyOn(autenticacaoRepository, 'atualizarUsuario').mockResolvedValue();
 
         return expect(autenticacaoService.login(adminLogin)).resolves.toEqual(retornoLogin);
+    });
+
+    it("Verifica login invalido", async () => {
+        jest.spyOn(autenticacaoRepository, 'login').mockResolvedValue(adminCadastrado);
+
+        return expect(autenticacaoService.login(adminSemLogin)).rejects.toBe("Usuário ou senha inválidos!");
     });
 });

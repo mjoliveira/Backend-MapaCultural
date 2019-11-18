@@ -7,6 +7,11 @@ const adminCadastrado = {
     validadeToken: "2019-11-19T21:00:14.022Z"
 };
 
+const adminSemLogin = {
+    login: "ana",
+    senha: "1234455655443"
+};
+
 const adminLogin = {
     login: "ana",
     senha: "123"
@@ -18,4 +23,4 @@ const retornoLogin = {
 };
 
 
-module.exports = { adminCadastrado, adminLogin, retornoLogin };
+module.exports = { adminCadastrado, adminSemLogin, adminLogin, retornoLogin };
