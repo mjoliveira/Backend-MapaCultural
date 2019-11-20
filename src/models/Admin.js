@@ -16,6 +16,14 @@ module.exports = (sequelize, DataTypes) => {
             senha: {
                 type: DataTypes.STRING,
                 allowNull: false
+            },
+            token: {
+                allowNull: true,
+                type: DataTypes.STRING
+            },
+            validadeToken: {
+                allowNull: true,
+                type: DataTypes.DATE
             }
         },
         {

@@ -21,7 +21,15 @@ module.exports = {
             allowNull: false,
             type: DataTypes.STRING
             
-        }
+        },
+          token: {
+              allowNull: true,
+              type: DataTypes.STRING
+          },
+          validadeToken: {
+              allowNull: true,
+              type: DataTypes.DATE
+          }
       });
     },
   

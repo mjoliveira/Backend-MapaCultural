@@ -2,7 +2,6 @@ const itinerarioRepository = require("../../infrastructure/itinerario/itinerario
 const itinerarioValidator = require("./itinerarioValidador");
 const {ResultadoVazioException } = require("../../utils/Exceptions");
 
-
 module.exports = {
     salvarItinerario: function (itinerario) {
         return new Promise((resolve, reject) => {
