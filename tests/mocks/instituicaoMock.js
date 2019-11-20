@@ -36,7 +36,7 @@ const instituicaoCompleta = {
     ]
 };
 
-const instituicaoRetorno = {
+const instituicaoRetornoLista = {
     id: 1,
     descricao: "Um museu teste",
     endereco: "Rua Teste 123",
@@ -46,6 +46,89 @@ const instituicaoRetorno = {
     observacoes: "Um museu",
     telefone: "(51)99999999",
     tempoVisita: 60,
+    horarios: [
+        {
+            dia: "seg",
+            horaAbertura: "13:00:00",
+            horaFechamento: "22:00:00"
+        },
+        {
+            dia: "ter",
+            horaAbertura: "13:00:00",
+            horaFechamento: "22:00:00"
+        },
+        {
+            dia: "qua",
+            horaAbertura: "13:00:00",
+            horaFechamento: "22:00:00"
+        }
+    ],
+    redes: [
+        {
+            redeSocial: "facebook.com/teste"
+        }
+    ],
+    imagens: [
+        {
+            url: "www.google.com.br/imagem.png"
+        }
+    ]
+};
+
+const instituicaoRetorno = {
+    dataValues: {
+        id: 1,
+        descricao: "Um museu teste",
+        endereco: "Rua Teste 123",
+        latitude: 98.0,
+        longitude: -97.0,
+        nome: "O Museu",
+        observacoes: "Um museu",
+        telefone: "(51)99999999",
+        tempoVisita: 60
+    },
+    horarios: [
+        {
+            dia: "seg",
+            horaAbertura: "13:00:00",
+            horaFechamento: "22:00:00"
+        },
+        {
+            dia: "ter",
+            horaAbertura: "13:00:00",
+            horaFechamento: "22:00:00"
+        },
+        {
+            dia: "qua",
+            horaAbertura: "13:00:00",
+            horaFechamento: "22:00:00"
+        }
+    ],
+    redes: [
+        {
+            redeSocial: "facebook.com/teste"
+        }
+    ],
+    imagens: [
+        {
+            url: "www.google.com.br/imagem.png"
+        }
+    ]
+};
+
+const instituicaoRetornoService = {
+    dataValues: {
+        id: 1,
+        descricao: "Um museu teste",
+        endereco: "Rua Teste 123",
+        latitude: 98.0,
+        longitude: -97.0,
+        nome: "O Museu",
+        observacoes: "Um museu",
+        telefone: "(51)99999999",
+        tempoVisita: 60,
+    aberto: true
+    },
     horarios: [
         {
             dia: "seg",
@@ -207,5 +290,5 @@ const instituicaoImagens = [
 
 module.exports = {
     instituicaoCompleta, instituicaoRetorno, instituicaoSumarizada, instituicaoIncompleta, instituicaoNome, instituicaoHorarios, instituicaoRedes,
-    instituicaoImagens, instituicaoCompletaErroDiaSemana, instituicaoCompletaErroTelefone
+    instituicaoImagens, instituicaoCompletaErroDiaSemana, instituicaoCompletaErroTelefone, instituicaoRetornoService, instituicaoRetornoLista
 };
