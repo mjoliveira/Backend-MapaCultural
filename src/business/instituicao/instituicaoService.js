@@ -25,7 +25,9 @@ module.exports = {
                 if (instituicao == null) {
                     throw new ResultadoVazioException('instituicao', instituicao);
                 }
-                resolve(instituicao);
+                aberto = instituicaoValidator.validarInstituicaoAberta(instituicao);
+                instituicaoFormatada = this.ajustarInstituicao(instituicao, aberto);
+                resolve(instituicaoFormatada);
             }).catch(err => {
                 if (err.name === 'ResultadoVazioException') {
                     reject(err);
@@ -107,6 +109,18 @@ module.exports = {
                 reject(new BussinessException('instituicao', err));
             });
         }));
+    },
+
+    ajustarInstituicao: function(instituicao, aberto){
+        console.log(instituicao.dataValues)
+        instituicao.dataValues.aberto = aberto;
+        console.log(instituicao.dataValues.aberto)
+        for (let j = 0; j < instituicao.horarios.length; j++) {
+            let horario = instituicao.horarios[j];
+            horario.horaAbertura = horario.horaAbertura.slice(0,5)
+            horario.horaFechamento = horario.horaFechamento.slice(0,5)
+        }
+        return instituicao;
     },
 
     atualizarInstituicaoImagens: function (id, imagens) {
