@@ -25,8 +25,8 @@ module.exports = {
                 if (instituicao == null) {
                     throw new ResultadoVazioException('instituicao', instituicao);
                 }
-                aberto = instituicaoValidator.validarInstituicaoAberta(instituicao);
-                instituicaoFormatada = this.ajustarInstituicao(instituicao, aberto);
+                const aberto = instituicaoValidator.validarInstituicaoAberta(instituicao);
+                const instituicaoFormatada = this.ajustarInstituicao(instituicao, aberto);
                 resolve(instituicaoFormatada);
             }).catch(err => {
                 if (err.name === 'ResultadoVazioException') {
@@ -115,8 +115,8 @@ module.exports = {
         instituicao.dataValues.aberto = aberto;
         for (let j = 0; j < instituicao.horarios.length; j++) {
             let horario = instituicao.horarios[j];
-            horario.horaAbertura = horario.horaAbertura.slice(0,5)
-            horario.horaFechamento = horario.horaFechamento.slice(0,5)
+            horario.horaAbertura = horario.horaAbertura.slice(0, 5);
+            horario.horaFechamento = horario.horaFechamento.slice(0, 5);
         }
         return instituicao;
     },
