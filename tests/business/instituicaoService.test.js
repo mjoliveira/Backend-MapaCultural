@@ -1,6 +1,7 @@
 const instituicaoService = require('../../src/business/instituicao/instituicaoService');
 const instituicaoRepository = require('../../src/infrastructure/instituicao/instituicaoRepository');
 const calendarioUtils = require('../../src/utils/CalendarioUtils');
+const instituicaoValidator = require('../../src/business/instituicao/instituicaoValidator');
 const {
     instituicaoCompleta,
     instituicaoRetorno,
@@ -11,13 +12,15 @@ const {
     instituicaoRedes,
     instituicaoImagens,
     instituicaoCompletaErroDiaSemana,
-    instituicaoCompletaErroTelefone
+    instituicaoCompletaErroTelefone,
+    instituicaoRetornoService,
+    instituicaoRetornoLista
 } = require('../mocks/instituicaoMock');
 
 
 describe('Testes Buscar Instituicao', () => {
     it("Retorna Lista de Instituicao", async () => {
-        jest.spyOn(instituicaoRepository, 'buscarInstituicoes').mockResolvedValue([instituicaoRetorno]);
+        jest.spyOn(instituicaoRepository, 'buscarInstituicoes').mockResolvedValue([instituicaoRetornoLista]);
         jest.spyOn(calendarioUtils, 'getDiaAtual').mockReturnValue("seg");
         jest.spyOn(calendarioUtils, 'temHorarioCorrespondente').mockReturnValue(true);
 
@@ -35,8 +38,9 @@ describe('Testes Buscar Instituicao', () => {
 describe('Testes Buscar Instituicao', () => {
     it('Busca instituição por ID', async () => {
         jest.spyOn(instituicaoRepository, 'buscarInstituicaoPorID').mockResolvedValue(instituicaoRetorno);
+        jest.spyOn(instituicaoValidator, 'validarInstituicaoAberta').mockReturnValue(true);
 
-        return expect(instituicaoService.buscarInstituicaoPorID(2)).resolves.toEqual(instituicaoRetorno);
+        return expect(instituicaoService.buscarInstituicaoPorID(2)).resolves.toEqual(instituicaoRetornoService);
     });
 
     it('Testa execption para ID não encontrado', async () => {
