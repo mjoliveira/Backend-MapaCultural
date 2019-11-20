@@ -112,9 +112,7 @@ module.exports = {
     },
 
     ajustarInstituicao: function(instituicao, aberto){
-        console.log(instituicao.dataValues)
         instituicao.dataValues.aberto = aberto;
-        console.log(instituicao.dataValues.aberto)
         for (let j = 0; j < instituicao.horarios.length; j++) {
             let horario = instituicao.horarios[j];
             horario.horaAbertura = horario.horaAbertura.slice(0,5)
