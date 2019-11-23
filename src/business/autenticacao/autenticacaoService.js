@@ -1,5 +1,5 @@
 const autenticacaoRepository = require("../../infrastructure/autenticacao/autenticacaoRepository");
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt-nodejs");
 
 module.exports = {
 
@@ -7,8 +7,11 @@ module.exports = {
         return new Promise((resolve, reject) => {
             autenticacaoRepository.login(usuario)
                 .then((resultado) => {
-                
-                    bcrypt.compare(usuario.senha, resultado.senha).then((senhaValida) => {
+                    console.log(resultado);
+
+                    bcrypt.compare(usuario.senha, resultado.senha, (senhaValida) => {
+                        console.log(senhaValida);
+                        console.log(usuario);
                         if (senhaValida) {
                             usuario.token = this.gerarToken();
                             usuario.validadeToken = this.gerarValidadeToken();
@@ -30,6 +33,7 @@ module.exports = {
                     });
                 })
                 .catch((err) => {
+                    console.log(err);
                     reject(err);
                 });
         });
