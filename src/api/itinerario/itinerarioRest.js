@@ -133,12 +133,7 @@ router.post('/', async function (req, res) {
  */
 router.get('/', async (req, res) => {
     await itinerarioService.buscarItinerarios()
-        .then((result) => {
-            res.set('X-Total-Count', result.length);
-            res.header('Access-Control-Expose-Headers', 'X-Total-Count');
-            res.status(200);
-            res.json(result);
-        })
+        .then(itinerario => res.json(itinerario))
         .catch(e => res.status(e.statusCode).send(e));
 });
 
