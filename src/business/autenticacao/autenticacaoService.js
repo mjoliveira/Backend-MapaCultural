@@ -11,8 +11,6 @@ module.exports = {
 
                     const senhaValida = bcrypt.compareSync(usuario.senha, resultado.senha);
 
-                    console.log(senhaValida);
-                    console.log(usuario);
                     if (senhaValida) {
                         usuario.token = this.gerarToken();
                         usuario.validadeToken = this.gerarValidadeToken();
@@ -34,7 +32,6 @@ module.exports = {
                     }
                 })
                 .catch((err) => {
-                    console.log(err);
                     reject(err);
                 });
         });
