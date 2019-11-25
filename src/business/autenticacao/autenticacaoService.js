@@ -7,7 +7,6 @@ module.exports = {
         return new Promise((resolve, reject) => {
             autenticacaoRepository.login(usuario)
                 .then((resultado) => {
-                    console.log(resultado);
 
                     const senhaValida = bcrypt.compareSync(usuario.senha, resultado.senha);
 
